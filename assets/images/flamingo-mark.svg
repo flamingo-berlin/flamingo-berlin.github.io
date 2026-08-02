@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Flamingo Berlin">
+  <rect width="64" height="64" rx="14" fill="#fff1f4"/>
+  <path d="M41 13c-9 0-15 6-15 14 0 5 3 9 8 11-8 2-13 7-13 14h7c0-5 4-8 10-8h3v-7h-3c-3 0-5-2-5-5 0-4 3-7 8-7 3 0 6 1 8 3l4-6c-3-3-7-5-12-5Z" fill="#d72657"/>
+  <circle cx="43" cy="22" r="2" fill="#2d2d2d"/>
+  <path d="M48 25l10 4-10 3Z" fill="#2d2d2d"/>
+  <path d="M38 44v14M44 44v14" stroke="#d72657" stroke-width="3" stroke-linecap="round"/>
+</svg>

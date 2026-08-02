@@ -1,0 +1,357 @@
+:root {
+  --flamingo-green: #166534;
+  --flamingo-green-dark: #14532d;
+  --flamingo-green-light: #dcfce7;
+
+  --flamingo-pink: #d72657;
+  --flamingo-pink-dark: #a9153c;
+
+  --md-primary-fg-color: var(--flamingo-green);
+  --md-primary-fg-color--light: #228348;
+  --md-primary-fg-color--dark: var(--flamingo-green-dark);
+  --md-accent-fg-color: var(--flamingo-pink);
+}
+
+.md-header {
+  background-color: var(--flamingo-green);
+}
+
+.md-tabs {
+  background-color: var(--flamingo-green-dark);
+}
+
+.md-button--primary {
+  background-color: var(--flamingo-pink) !important;
+  border-color: var(--flamingo-pink) !important;
+  color: white !important;
+}
+
+.md-button--primary:hover {
+  background-color: var(--flamingo-pink-dark) !important;
+  border-color: var(--flamingo-pink-dark) !important;
+}
+
+.md-typeset a {
+  color: var(--flamingo-green);
+}
+
+.md-typeset a:hover {
+  color: var(--flamingo-pink);
+}
+
+.md-typeset mark {
+  background-color: var(--flamingo-green-light);
+  color: var(--flamingo-green-dark);
+}
+
+.md-typeset h1 {
+  font-weight: 750;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+}
+
+.grid.cards > ul > li {
+  border-radius: 0.75rem;
+}
+
+.grid.cards > ul > li:hover {
+  border-color: var(--flamingo-pink);
+}
+
+
+/* Protesta e ardhshme */
+
+.protest-featured {
+  position: relative;
+  margin: 1.5rem 0 2.5rem;
+  padding: 1.6rem;
+  border: 1px solid rgba(22, 101, 52, 0.2);
+  border-left: 0.35rem solid var(--flamingo-pink);
+  border-radius: 0.8rem;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(22, 101, 52, 0.08),
+      rgba(215, 38, 87, 0.06)
+    );
+}
+
+.protest-featured h3 {
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.protest-meta {
+  margin: 0.8rem 0 1.2rem;
+}
+
+.protest-meta p {
+  margin: 0.35rem 0;
+}
+
+/* Statusi */
+
+.protest-status {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+.protest-status--planned {
+  color: #713f12;
+  background: #fef3c7;
+}
+
+/* Kronologjia */
+
+.protest-timeline {
+  position: relative;
+  margin: 2rem 0;
+  padding-left: 2.7rem;
+}
+
+.protest-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 1rem;
+  width: 2px;
+  background: rgba(22, 101, 52, 0.22);
+}
+
+.protest-entry {
+  position: relative;
+  margin-bottom: 1rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(22, 101, 52, 0.15);
+  border-radius: 0.7rem;
+  background: var(--md-default-bg-color);
+}
+
+.protest-entry:hover {
+  border-color: var(--flamingo-pink);
+  box-shadow: 0 0.25rem 1rem rgba(31, 41, 51, 0.07);
+}
+
+.protest-entry h3 {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+.protest-entry > p {
+  margin-top: 0.35rem;
+  margin-bottom: 0.55rem;
+}
+
+.protest-entry--major {
+  border-left: 0.3rem solid var(--flamingo-pink);
+}
+
+.protest-number {
+  position: absolute;
+  top: 1rem;
+  left: -2.65rem;
+  display: grid;
+  width: 1.9rem;
+  height: 1.9rem;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--flamingo-green);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.protest-entry--major .protest-number {
+  background: var(--flamingo-pink);
+}
+
+/* Mobile */
+
+@media screen and (max-width: 600px) {
+  .protest-timeline {
+    padding-left: 2.2rem;
+  }
+
+  .protest-timeline::before {
+    left: 0.75rem;
+  }
+
+  .protest-number {
+    left: -2.25rem;
+  }
+
+  .protest-featured {
+    padding: 1.2rem;
+  }
+}
+
+.embedded-viewer {
+  width: 100%;
+  margin: 1.25rem 0;
+  overflow: hidden;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 12px;
+  background: var(--md-default-bg-color);
+}
+
+.embedded-viewer iframe {
+  display: block;
+  width: 100%;
+  min-height: 760px;
+  border: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .embedded-viewer iframe {
+    min-height: 680px;
+  }
+}
+
+
+/* Protesta e radhës */
+
+.protest-featured {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1.4rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.9rem;
+  background: var(--md-default-bg-color);
+}
+
+.protest-featured h2 {
+  margin-top: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.protest-status {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.protest-status--planned {
+  color: #713f12;
+  background: #fef3c7;
+}
+
+/* Galeria horizontale */
+
+.poster-gallery {
+  display: flex;
+  gap: 0.8rem;
+  margin: 1.25rem 0 0.5rem;
+  padding-bottom: 0.7rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color:
+    var(--flamingo-pink)
+    var(--md-default-fg-color--lightest);
+}
+
+.poster-gallery img {
+  flex: 0 0 auto;
+  width: min(78vw, 360px);
+  height: 460px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  scroll-snap-align: start;
+  background: var(--md-default-fg-color--lightest);
+}
+
+.poster-gallery img:first-child {
+  width: min(82vw, 390px);
+}
+
+.gallery-hint {
+  display: block;
+  margin-bottom: 1.1rem;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.75rem;
+}
+
+/* Lista e protestave */
+
+.protest-list {
+  overflow: hidden;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.8rem;
+}
+
+.protest-row {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  color: var(--md-default-fg-color) !important;
+  text-decoration: none;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.protest-row:last-child {
+  border-bottom: 0;
+}
+
+.protest-row:hover {
+  background: rgba(22, 101, 52, 0.06);
+}
+
+.protest-list-number {
+  color: var(--flamingo-green);
+  font-weight: 750;
+}
+
+.protest-row--major .protest-list-number {
+  color: var(--flamingo-pink);
+}
+
+.protest-list-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.protest-list-info small {
+  color: var(--md-default-fg-color--light);
+}
+
+.protest-list-link {
+  color: var(--flamingo-pink);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 600px) {
+  .protest-featured {
+    padding: 1rem;
+  }
+
+  .poster-gallery img,
+  .poster-gallery img:first-child {
+    width: 82vw;
+    height: 430px;
+  }
+
+  .protest-row {
+    grid-template-columns: 2.5rem 1fr;
+  }
+
+  .protest-list-link {
+    display: none;
+  }
+}
