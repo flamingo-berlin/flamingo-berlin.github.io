@@ -1,0 +1,80 @@
+site_name: Flamingo Berlin
+site_url: https://flamingo-berlin.github.io/
+
+
+site_description: >
+  Protesta, informacion dhe veprim qytetar
+  për natyrën, demokracinë dhe interesin publik në Shqipëri.
+
+repo_url: https://github.com/flamingo-berlin/flamingo-berlin.github.io
+repo_name: flamingo-berlin/flamingo-berlin.github.io
+
+
+theme:
+  name: material
+  language: sq
+
+  logo: assets/images/logo.png
+  favicon: assets/favicon.png
+
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Kalo në temën e errët
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Kalo në temën e ndriçuar
+
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+
+plugins:
+  - search
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.mark
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra:
+  generator: false
+
+  social:
+    - icon: simple/instagram
+      link: https://instagram.com/flamingo_berlin
+      name: Instagram
+
+    - icon: simple/discord
+      link: https://discord.gg/FNf6hS858
+      name: Discord
+
+nav:
+  - Protestat: index.md
+  - Motivimi: motivimi.md
+
+  - Reago:
+      - vepro.md
+      - 1. Shpërndaje: vepro/shperndaje.md
+      - 2. Letra për Ambasadat: vepro/ambasadat.md
+      - 3. Letra për Deputetët: vepro/deputetet.md
+      - 4. Nënshkruaj Peticionin: vepro/peticioni.md
+
+  - Rreth nesh: rreth-nesh.md
