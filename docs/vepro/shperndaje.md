@@ -13,7 +13,7 @@ Zgjidh një burim, lexoje dhe shpërndaje në rrjetet e tua sociale, grupet e ko
 
 ## Flamingo Revolution
 
-- :simple-instagram: [Flamingo Berlin në Instagram](https://www.instagram.com/flamingo_berlin){ target="_blank" }
+- :simple-instagram: [Flamingo Berlin në Instagram](https://www.instagram.com/flamingosofberlin){ target="_blank" }
 
 
 - :simple-facebook: [Grupi në Facebook](https://www.facebook.com/groups/1542207594268974){ target="_blank" }

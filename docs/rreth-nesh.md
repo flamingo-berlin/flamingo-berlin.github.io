@@ -12,19 +12,65 @@ hide:
 
 ## Çfarë bëjmë?
 
-- Organizojmë protesta dhe aktivitete publike.
-- Informojmë mbi çështjet që ndjekim.
-- Përgatisim materiale dhe burime të hapura.
+<div class="grid cards" markdown>
+
+-   :material-bullhorn-outline:{ .lg .middle }
+
+    #### Protestojmë
+
+    Organizojmë protesta dhe aktivitete publike, çdo të diel.
+
+-   :material-newspaper-variant-outline:{ .lg .middle }
+
+    #### Informojmë
+
+    Ndajmë të dhëna dhe zhvillime mbi çështjet që ndjekim.
+
+-   :material-folder-open-outline:{ .lg .middle }
+
+    #### Përgatisim
+
+    Krijojmë materiale, dokumente dhe burime të hapura për këdo.
+
+</div>
 
 ---
 
 ## Parimet tona
 
-- 🌿 Paqësorë: Mbështesim vetëm veprime paqësore dhe demokratike.
-- 🤝 Të hapur: Çdokush mund të kontribuojë sipas kohës, aftësive dhe mundësive që ka.
-- ⚖️ Të pavarur: Veprimtaria jonë nuk udhëhiqet nga interesa partiake apo financiare.
-- 📖 Të verifikueshëm: Informacionet që publikojmë mbështeten në dokumente dhe burime të kontrollueshme.
-- 💬 Të respektueshëm: Diskutojmë idetë me respekt dhe nuk tolerojmë sulme personale apo diskriminim.
+<div class="grid cards" markdown>
+
+-   :material-leaf:{ .lg .middle }
+
+    #### Paqësorë
+
+    Mbështesim vetëm veprime paqësore dhe demokratike.
+
+-   :material-hand-heart-outline:{ .lg .middle }
+
+    #### Të hapur
+
+    Çdokush mund të kontribuojë sipas kohës, aftësive dhe mundësive që ka.
+
+-   :material-scale-balance:{ .lg .middle }
+
+    #### Të pavarur
+
+    Veprimtaria jonë nuk udhëhiqet nga interesa partiake apo financiare.
+
+-   :material-book-open-variant-outline:{ .lg .middle }
+
+    #### Të verifikueshëm
+
+    Informacionet që publikojmë mbështeten në dokumente dhe burime të kontrollueshme.
+
+-   :material-chat-outline:{ .lg .middle }
+
+    #### Të respektueshëm
+
+    Diskutojmë idetë me respekt dhe nuk tolerojmë sulme personale apo diskriminim.
+
+</div>
 
 ---
 
@@ -34,14 +80,16 @@ Flamingo Berlin është i hapur për këdo që dëshiron të kontribuojë në m�
 
 ### Kontributi
 
-- Organizim aktivitetesh
-- Kërkim dhe dokumentim
-- Komunikim dhe media sociale
-- Dizajn grafik
-- Foto dhe video
-- Përkthime
-- Logjistikë
-- Marrëdhënie me organizata dhe institucione
+<ul class="chip-list" markdown>
+<li>🗓️ Organizim aktivitetesh</li>
+<li>🔎 Kërkim dhe dokumentim</li>
+<li>📣 Komunikim dhe media sociale</li>
+<li>🎨 Dizajn grafik</li>
+<li>📸 Foto dhe video</li>
+<li>🌍 Përkthime</li>
+<li>🚐 Logjistikë</li>
+<li>🤝 Marrëdhënie me organizata dhe institucione</li>
+</ul>
 
 ---
 
@@ -58,7 +106,7 @@ Flamingo Berlin është i hapur për këdo që dëshiron të kontribuojë në m�
 
     Ndiq njoftimet, protestat dhe materialet më të fundit.
 
-    [:octicons-arrow-right-24: Ndiq @flamingo_berlin](https://instagram.com/flamingo_berlin)
+    [:octicons-arrow-right-24: Ndiq @flamingosofberlin](https://www.instagram.com/flamingosofberlin)
     
 -   :simple-discord:{ .lg .middle }
 
