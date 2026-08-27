@@ -1,23 +1,48 @@
 :root {
-  --flamingo-green: #166534;
-  --flamingo-green-dark: #14532d;
-  --flamingo-green-light: #dcfce7;
-
   --flamingo-pink: #d72657;
   --flamingo-pink-dark: #a9153c;
+  --flamingo-pink-light: #fbe0e8;
+  --flamingo-pink-bright: #ff6f9c; /* pink accents/text on charcoal - kept AA-readable */
 
-  --md-primary-fg-color: var(--flamingo-green);
-  --md-primary-fg-color--light: #228348;
-  --md-primary-fg-color--dark: var(--flamingo-green-dark);
-  --md-accent-fg-color: var(--flamingo-pink);
+  /* Black & white base, pink as the one accent everywhere it's used */
+  --charcoal: #24262b;
+  --md-primary-fg-color: var(--charcoal);
+  --md-primary-fg-color--light: #4b5563;
+  --md-primary-fg-color--dark: #000000;
+  --md-accent-fg-color: var(--flamingo-pink-dark);
+  --md-accent-fg-color--transparent: rgba(215, 38, 87, 0.12);
+  --md-typeset-a-color: var(--flamingo-pink);
 }
 
-.md-header {
-  background-color: var(--flamingo-green);
+/* Header + subnav: both charcoal, a solid dark band across the top */
+
+.md-header,
+.md-tabs {
+  background-color: var(--charcoal);
+  --md-primary-bg-color: rgba(255, 255, 255, 0.92);
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.6);
 }
 
 .md-tabs {
-  background-color: var(--flamingo-green-dark);
+  border-bottom: 0.2rem solid var(--flamingo-pink);
+}
+
+.md-header .md-search__form {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.md-header .md-search__form:hover {
+  background-color: rgba(255, 255, 255, 0.24);
+}
+
+.md-tabs__item--active .md-tabs__link {
+  color: var(--flamingo-pink-bright);
+  opacity: 1;
+}
+
+.md-header__button,
+.md-tabs__link {
+  outline-color: var(--flamingo-pink-bright);
 }
 
 .md-button--primary {
@@ -31,17 +56,9 @@
   border-color: var(--flamingo-pink-dark) !important;
 }
 
-.md-typeset a {
-  color: var(--flamingo-green);
-}
-
-.md-typeset a:hover {
-  color: var(--flamingo-pink);
-}
-
 .md-typeset mark {
-  background-color: var(--flamingo-green-light);
-  color: var(--flamingo-green-dark);
+  background-color: var(--flamingo-pink-light);
+  color: var(--flamingo-pink-dark);
 }
 
 .md-typeset h1 {
@@ -52,36 +69,219 @@
   font-weight: 700;
 }
 
+.md-typeset ul li::marker {
+  color: var(--flamingo-pink);
+}
+
+.md-typeset hr {
+  height: 0.15rem;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--flamingo-pink) 50%,
+    transparent
+  );
+  opacity: 0.45;
+  margin: 2rem 0;
+}
+
+/* Kartat (grid cards) - më "cute", me ikonë rrethore rozë dhe lëvizje hover */
+
 .grid.cards > ul > li {
-  border-radius: 0.75rem;
+  border-radius: 0.9rem;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .grid.cards > ul > li:hover {
   border-color: var(--flamingo-pink);
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.7rem 1.4rem rgba(215, 38, 87, 0.14);
+}
+
+.grid.cards > ul > li > p:first-child {
+  margin-bottom: 0.6rem;
+}
+
+.grid.cards > ul > li > p:first-child .twemoji {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--flamingo-pink-light);
+  color: var(--flamingo-pink-dark);
+}
+
+.grid.cards > ul > li h2,
+.grid.cards > ul > li h3,
+.grid.cards > ul > li h4 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+/* Statistika të shpejta */
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.9rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.stat-card {
+  padding: 1.1rem 1rem;
+  border: 1px solid rgba(215, 38, 87, 0.18);
+  border-radius: 0.9rem;
+  background: rgba(215, 38, 87, 0.04);
+  text-align: center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-0.15rem);
+  box-shadow: 0 0.6rem 1.2rem rgba(215, 38, 87, 0.12);
+}
+
+.stat-card p {
+  margin: 0;
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--flamingo-pink);
+  line-height: 1.15;
+}
+
+.stat-label {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color--light);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Chip-lista (p.sh. mënyrat e kontributit) */
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.2rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip-list li {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(215, 38, 87, 0.3);
+  border-radius: 999px;
+  background: var(--flamingo-pink-light);
+  color: var(--flamingo-pink-dark);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* Ritmi i ngjyrave brenda përmbajtjes: antracit → rozë → e bardhë, e përsëritur */
+
+.section-band {
+  margin: 1.6rem 0 2rem;
+  padding: 1.8rem 1.6rem;
+  border-radius: 1rem;
+}
+
+.section-band > :first-child {
+  margin-top: 0;
+}
+
+.section-band > :last-child {
+  margin-bottom: 0;
+}
+
+.section-band--charcoal {
+  background: var(--charcoal);
+  color: #fff;
+}
+
+.section-band--charcoal h1,
+.section-band--charcoal h2,
+.section-band--charcoal h3,
+.section-band--charcoal p,
+.section-band--charcoal strong {
+  color: #fff;
+}
+
+.section-band--charcoal a {
+  color: var(--flamingo-pink-bright);
+}
+
+.section-band--charcoal .stat-card {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.section-band--charcoal .stat-number {
+  color: var(--flamingo-pink-bright);
+}
+
+.section-band--charcoal .stat-label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.section-band--pink {
+  background: var(--flamingo-pink);
+  color: #fff;
+}
+
+.section-band--pink h1,
+.section-band--pink h2,
+.section-band--pink h3,
+.section-band--pink p,
+.section-band--pink strong {
+  color: #fff;
+}
+
+.section-band--pink a:not(.md-button) {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.section-band--pink .md-button--primary {
+  background-color: #fff !important;
+  border-color: #fff !important;
+  color: var(--flamingo-pink) !important;
+}
+
+.section-band--pink .md-button--primary:hover {
+  background-color: var(--flamingo-pink-light) !important;
+  border-color: var(--flamingo-pink-light) !important;
+}
+
+.section-band--white {
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.05);
+}
+
+.cta-banner {
+  text-align: center;
+}
+
+.cta-banner p {
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
-/* Protesta e ardhshme */
-
-.protest-featured {
-  position: relative;
-  margin: 1.5rem 0 2.5rem;
-  padding: 1.6rem;
-  border: 1px solid rgba(22, 101, 52, 0.2);
-  border-left: 0.35rem solid var(--flamingo-pink);
-  border-radius: 0.8rem;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(22, 101, 52, 0.08),
-      rgba(215, 38, 87, 0.06)
-    );
-}
-
-.protest-featured h3 {
-  margin-top: 0.5rem;
-  font-size: 1.5rem;
-}
+/* Protesta e radhës */
 
 .protest-meta {
   margin: 0.8rem 0 1.2rem;
@@ -103,94 +303,10 @@
   text-transform: uppercase;
 }
 
-.protest-status--planned {
-  color: #713f12;
-  background: #fef3c7;
-}
-
-/* Kronologjia */
-
-.protest-timeline {
-  position: relative;
-  margin: 2rem 0;
-  padding-left: 2.7rem;
-}
-
-.protest-timeline::before {
-  content: "";
-  position: absolute;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  left: 1rem;
-  width: 2px;
-  background: rgba(22, 101, 52, 0.22);
-}
-
-.protest-entry {
-  position: relative;
-  margin-bottom: 1rem;
-  padding: 1rem 1.2rem;
-  border: 1px solid rgba(22, 101, 52, 0.15);
-  border-radius: 0.7rem;
-  background: var(--md-default-bg-color);
-}
-
-.protest-entry:hover {
-  border-color: var(--flamingo-pink);
-  box-shadow: 0 0.25rem 1rem rgba(31, 41, 51, 0.07);
-}
-
-.protest-entry h3 {
-  margin-top: 0;
-  margin-bottom: 0.25rem;
-}
-
-.protest-entry > p {
-  margin-top: 0.35rem;
-  margin-bottom: 0.55rem;
-}
-
-.protest-entry--major {
-  border-left: 0.3rem solid var(--flamingo-pink);
-}
-
-.protest-number {
-  position: absolute;
-  top: 1rem;
-  left: -2.65rem;
-  display: grid;
-  width: 1.9rem;
-  height: 1.9rem;
-  place-items: center;
-  border-radius: 50%;
-  color: white;
-  background: var(--flamingo-green);
-  font-size: 0.75rem;
-  font-weight: 700;
-}
-
-.protest-entry--major .protest-number {
-  background: var(--flamingo-pink);
-}
-
-/* Mobile */
-
-@media screen and (max-width: 600px) {
-  .protest-timeline {
-    padding-left: 2.2rem;
-  }
-
-  .protest-timeline::before {
-    left: 0.75rem;
-  }
-
-  .protest-number {
-    left: -2.25rem;
-  }
-
-  .protest-featured {
-    padding: 1.2rem;
-  }
+.protest-status--planned,
+.protest-status--latest {
+  color: var(--flamingo-pink-dark);
+  background: var(--flamingo-pink-light);
 }
 
 .embedded-viewer {
@@ -215,35 +331,6 @@
   }
 }
 
-
-/* Protesta e radhës */
-
-.protest-featured {
-  margin: 1.5rem 0 2.5rem;
-  padding: 1.4rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 0.9rem;
-  background: var(--md-default-bg-color);
-}
-
-.protest-featured h2 {
-  margin-top: 0.6rem;
-  margin-bottom: 0.5rem;
-}
-
-.protest-status {
-  display: inline-block;
-  padding: 0.25rem 0.65rem;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.protest-status--planned {
-  color: #713f12;
-  background: #fef3c7;
-}
 
 /* Galeria horizontale */
 
@@ -308,11 +395,11 @@
 }
 
 .protest-row:hover {
-  background: rgba(22, 101, 52, 0.06);
+  background: var(--flamingo-pink-light);
 }
 
 .protest-list-number {
-  color: var(--flamingo-green);
+  color: var(--md-default-fg-color);
   font-weight: 750;
 }
 
@@ -337,8 +424,8 @@
 }
 
 @media screen and (max-width: 600px) {
-  .protest-featured {
-    padding: 1rem;
+  .section-band {
+    padding: 1.2rem 1rem;
   }
 
   .poster-gallery img,
