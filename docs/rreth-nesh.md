@@ -74,6 +74,18 @@ hide:
 
 ---
 
+## Partnerët dhe rrjeti ynë
+
+Punojmë së bashku me:
+
+- **FlamingoRevolution.eu**
+- **Diaspora Zbarkon**
+- **Administratorët e Protestave të Diasporës**
+
+Jemi gjithashtu në kontakt me **PPNEA**, **EuroNatur** dhe organizata të tjera që punojnë për mbrojtjen e natyrës dhe interesit publik.
+
+---
+
 ## Bashkohu
 
 Flamingo Berlin është i hapur për këdo që dëshiron të kontribuojë në mënyrë paqësore dhe konstruktive. Nuk është e nevojshme të jesh organizator. Mund të ndihmosh sipas aftësive të tua.

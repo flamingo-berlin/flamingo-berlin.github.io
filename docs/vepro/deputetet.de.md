@@ -1,38 +1,28 @@
 ---
-title: Letra për Deputetët
-description: Model letre për deputetët e Bundestagut Gjerman.
+title: An Abgeordnete schreiben
+description: Musterschreiben an Abgeordnete des Deutschen Bundestages.
 ---
 
-# Letra për Deputetët
+# An Abgeordnete schreiben
 
-Një mënyrë tjetër për të mbështetur këtë kauzë është të informoni deputetin që ju përfaqëson në Bundestagun Gjerman.
+Du kannst die Sache unterstützen, indem du die Abgeordnete oder den Abgeordneten informierst, die oder der deinen Wahlkreis im Deutschen Bundestag vertritt. Bundestagsabgeordnete können Fragen des Umweltschutzes, der Rechtsstaatlichkeit und der europäischen Integration Albaniens aufgreifen. Ein kurzes, gut begründetes Schreiben kann diesen Themen mehr Aufmerksamkeit verschaffen.
 
-Deputetët gjermanë kanë mundësi të ngrenë shqetësime që lidhen me mbrojtjen e mjedisit, shtetin e së drejtës dhe procesin e integrimit europian të Shqipërisë.
+## Vorgehen
 
-Një letër e shkurtër dhe e argumentuar mund të ndihmojë që këto çështje të marrin më shumë vëmendje.
+1. Finde die Abgeordnete oder den Abgeordneten deines Wahlkreises.
+2. Ergänze das Musterschreiben um einige persönliche Sätze.
+3. Sende es per E-Mail.
+4. Informiere unsere Community, wenn du eine Antwort erhältst.
 
----
+## Mögliche Themen
 
-## Si të veprosh?
+- Bedeutung der Schutzgebiete in Albanien
+- Schutz von Biodiversität und Naturerbe
+- Transparenz und öffentliche Beteiligung
+- Achtung der Rechtsstaatlichkeit
+- Bedeutung dieser Fragen für den EU-Beitrittsprozess
 
-1. Gjej deputetin që përfaqëson zonën ku jeton.
-2. Personalizo modelin e letrës me disa fjali personale.
-3. Dërgoje me email.
-4. Nëse merr përgjigje, njofto edhe komunitetin tonë.
-
----
-
-## Çfarë mund të përmendësh?
-
-- rëndësinë e zonave të mbrojtura në Shqipëri;
-- mbrojtjen e biodiversitetit dhe trashëgimisë natyrore;
-- transparencën dhe konsultimin publik;
-- respektimin e shtetit të së drejtës;
-- rëndësinë e këtyre çështjeve në procesin e integrimit europian.
-
----
-
-## Model letre (Gjermanisht)
+## Musterschreiben
 
 > **Betreff:** Bitte um Aufmerksamkeit für Umwelt- und Rechtsstaatlichkeitsfragen in Albanien
 >
@@ -48,6 +38,5 @@ Një letër e shkurtër dhe e argumentuar mund të ndihmojë që këto çështje
 >
 > Vielen Dank für Ihre Zeit und Ihre Aufmerksamkeit.
 >
-> Mit freundlichen Grüßen
->
+> Mit freundlichen Grüßen  
 > *Name*

@@ -6,8 +6,8 @@ site_description: >
   Protesta, informacion dhe veprim qytetar
   për natyrën, demokracinë dhe interesin publik në Shqipëri.
 
-repo_url: https://github.com/flamingo_berlin/flamingo_berlin.github.io
-repo_name: flamingo_berlin/flamingo_berlin.github.io
+repo_url: https://github.com/flamingo-berlin/flamingo_berlin.github.io
+repo_name: flamingo-berlin/flamingo_berlin.github.io
 
 
 theme:
@@ -42,6 +42,42 @@ theme:
 
 plugins:
   - search
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: sq
+          default: true
+          name: Shqip
+          build: true
+        - locale: en
+          name: English
+          build: true
+          site_name: Flamingo Berlin
+          nav_translations:
+            Protestat: Protests
+            Motivimi: Motivation
+            Vepro: Take action
+            1. Shpërndaje: 1. Share
+            2. Letra për Ambasadat: 2. Write to the Embassy
+            3. Letra për Deputetët: 3. Write to MPs
+            4. Nënshkruaj Peticionin: 4. Sign the petition
+            Rreth nesh: About us
+        - locale: de
+          name: Deutsch
+          build: true
+          site_name: Flamingo Berlin
+          nav_translations:
+            Protestat: Proteste
+            Motivimi: Motivation
+            Vepro: Aktiv werden
+            1. Shpërndaje: 1. Teilen
+            2. Letra për Ambasadat: 2. An die Botschaft schreiben
+            3. Letra për Deputetët: 3. An Abgeordnete schreiben
+            4. Nënshkruaj Peticionin: 4. Petition unterzeichnen
+            Rreth nesh: Über uns
 
 markdown_extensions:
   - attr_list
@@ -74,7 +110,7 @@ nav:
   - Protestat: index.md
   - Motivimi: motivimi.md
 
-  - Reago:
+  - Vepro:
       - vepro.md
       - 1. Shpërndaje: vepro/shperndaje.md
       - 2. Letra për Ambasadat: vepro/ambasadat.md

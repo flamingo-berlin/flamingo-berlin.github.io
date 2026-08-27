@@ -49,7 +49,53 @@ Protesta paqësore, informim qytetar dhe solidaritet me lëvizjen Flamingo Revol
 
 <div class="section-band section-band--white" markdown>
 
+## Momente nga protestat
+
+Pamje nga protestat dhe aktivitetet tona në Berlin.
+
+<div class="poster-gallery">
+  <a href="assets/images/20260802_173857.webp" target="_blank" aria-label="Hap fotografinë nga protesta e 2 gushtit 2026">
+    <img src="assets/images/20260802_173857.webp" alt="Pjesëmarrës në protestën e Flamingo Berlin më 2 gusht 2026" loading="lazy" decoding="async">
+  </a>
+  <a href="assets/images/20260802_173910.webp" target="_blank" aria-label="Hap fotografinë e dytë nga protesta e 2 gushtit 2026">
+    <img src="assets/images/20260802_173910.webp" alt="Protestues të mbledhur në Berlin më 2 gusht 2026" loading="lazy" decoding="async">
+  </a>
+  <a href="assets/images/20260802_180112.webp" target="_blank" aria-label="Hap fotografinë e tretë nga protesta e 2 gushtit 2026">
+    <img src="assets/images/20260802_180112.webp" alt="Momente nga protesta paqësore e Flamingo Berlin" loading="lazy" decoding="async">
+  </a>
+  <a href="assets/images/20260802_184231.webp" target="_blank" aria-label="Hap fotografinë e katërt nga protesta e 2 gushtit 2026">
+    <img src="assets/images/20260802_184231.webp" alt="Aktivistë të Flamingo Berlin gjatë protestës" loading="lazy" decoding="async">
+  </a>
+  <a href="assets/images/IMG-20260802-WA0016.webp" target="_blank" aria-label="Hap fotografinë e pestë nga protesta e 2 gushtit 2026">
+    <img src="assets/images/IMG-20260802-WA0016.webp" alt="Pjesëmarrës dhe pankarta në protestën e Flamingo Berlin" loading="lazy" decoding="async">
+  </a>
+  <a href="assets/images/20260719_180414.webp" target="_blank" aria-label="Hap fotografinë nga protesta e 19 korrikut 2026">
+    <img src="assets/images/20260719_180414.webp" alt="Protesta e Flamingo Berlin më 19 korrik 2026" loading="lazy" decoding="async">
+  </a>
+  <a href="assets/images/20260712_113954.webp" target="_blank" aria-label="Hap fotografinë e parë nga protesta e 12 korrikut 2026">
+    <img src="assets/images/20260712_113954.webp" alt="Tubimi i Flamingo Berlin më 12 korrik 2026" loading="lazy" decoding="async">
+  </a>
+  <a href="assets/images/20260712_120209.webp" target="_blank" aria-label="Hap fotografinë e dytë nga protesta e 12 korrikut 2026">
+    <img src="assets/images/20260712_120209.webp" alt="Aktivistë gjatë tubimit të 12 korrikut 2026" loading="lazy" decoding="async">
+  </a>
+  <a href="assets/images/20260712_132516.webp" target="_blank" aria-label="Hap fotografinë e tretë nga protesta e 12 korrikut 2026">
+    <img src="assets/images/20260712_132516.webp" alt="Momente nga protesta e 12 korrikut 2026 në Berlin" loading="lazy" decoding="async">
+  </a>
+  <a href="assets/images/IMG_6495.JPG.webp" target="_blank" aria-label="Hap fotografinë nga aktivitetet e Flamingo Berlin">
+    <img src="assets/images/IMG_6495.JPG.webp" alt="Aktivitet i komunitetit Flamingo Berlin" loading="lazy" decoding="async">
+  </a>
+</div>
+
+<small class="gallery-hint">Prek një foto për ta hapur të plotë</small>
+
+</div>
+
+<div class="section-band section-band--white" markdown>
+
 ## Historia e protestave
+
+<details class="protest-archive">
+<summary>Shiko të gjitha protestat e kaluara</summary>
 
 <div class="protest-list">
 
@@ -154,6 +200,8 @@ Protesta paqësore, informim qytetar dhe solidaritet me lëvizjen Flamingo Revol
 
 </div>
 
+</details>
+
 </div>
 
 <div class="section-band section-band--charcoal cta-banner" markdown>
@@ -165,4 +213,3 @@ Protestat tona janë paqësore dhe të hapura për të gjithë, dhe zhvillohen �
 [Shiko si mund të reagosh](vepro.md){ .md-button .md-button--primary }
 
 </div>
-

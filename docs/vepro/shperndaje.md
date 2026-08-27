@@ -16,9 +16,6 @@ Zgjidh një burim, lexoje dhe shpërndaje në rrjetet e tua sociale, grupet e ko
 - :simple-instagram: [Flamingo Berlin në Instagram](https://www.instagram.com/flamingosofberlin){ target="_blank" }
 
 
-- :simple-facebook: [Grupi në Facebook](https://www.facebook.com/groups/1542207594268974){ target="_blank" }
-
-
 - :material-web: [Flamingot Vendosin](https://flamingotvendosin.org){ target="_blank" }
 
 - :simple-wikipedia: [Flamingo Revolution në Wikipedia](https://en.wikipedia.org/wiki/Flamingo_Revolution){ target="_blank" }

@@ -1,38 +1,28 @@
 ---
-title: Letra për Deputetët
-description: Model letre për deputetët e Bundestagut Gjerman.
+title: Write to MPs
+description: Template letter to members of the German Bundestag.
 ---
 
-# Letra për Deputetët
+# Write to your MP
 
-Një mënyrë tjetër për të mbështetur këtë kauzë është të informoni deputetin që ju përfaqëson në Bundestagun Gjerman.
+Another way to support the cause is to inform the member of the German Bundestag who represents you. German MPs can raise concerns about environmental protection, the rule of law and Albania's European integration. A concise, well-reasoned letter can help these issues receive more attention.
 
-Deputetët gjermanë kanë mundësi të ngrenë shqetësime që lidhen me mbrojtjen e mjedisit, shtetin e së drejtës dhe procesin e integrimit europian të Shqipërisë.
+## How to proceed
 
-Një letër e shkurtër dhe e argumentuar mund të ndihmojë që këto çështje të marrin më shumë vëmendje.
+1. Find the MP who represents your area.
+2. Personalize the template with a few sentences.
+3. Send it by email.
+4. If you receive a response, let our community know.
 
----
+## Points you can mention
 
-## Si të veprosh?
+- The importance of Albania's protected areas
+- Protection of biodiversity and natural heritage
+- Transparency and public consultation
+- Respect for the rule of law
+- The relevance of these issues to EU integration
 
-1. Gjej deputetin që përfaqëson zonën ku jeton.
-2. Personalizo modelin e letrës me disa fjali personale.
-3. Dërgoje me email.
-4. Nëse merr përgjigje, njofto edhe komunitetin tonë.
-
----
-
-## Çfarë mund të përmendësh?
-
-- rëndësinë e zonave të mbrojtura në Shqipëri;
-- mbrojtjen e biodiversitetit dhe trashëgimisë natyrore;
-- transparencën dhe konsultimin publik;
-- respektimin e shtetit të së drejtës;
-- rëndësinë e këtyre çështjeve në procesin e integrimit europian.
-
----
-
-## Model letre (Gjermanisht)
+## Letter template (German)
 
 > **Betreff:** Bitte um Aufmerksamkeit für Umwelt- und Rechtsstaatlichkeitsfragen in Albanien
 >
@@ -48,6 +38,5 @@ Një letër e shkurtër dhe e argumentuar mund të ndihmojë që këto çështje
 >
 > Vielen Dank für Ihre Zeit und Ihre Aufmerksamkeit.
 >
-> Mit freundlichen Grüßen
->
+> Mit freundlichen Grüßen  
 > *Name*

@@ -332,33 +332,52 @@
 }
 
 
-/* Galeria horizontale */
+/* Galeria në formë koleksioni */
 
 .poster-gallery {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-auto-rows: 150px;
+  grid-auto-flow: dense;
   gap: 0.8rem;
   margin: 1.25rem 0 0.5rem;
-  padding-bottom: 0.7rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color:
-    var(--flamingo-pink)
-    var(--md-default-fg-color--lightest);
 }
 
-.poster-gallery img {
-  flex: 0 0 auto;
-  width: min(78vw, 360px);
-  height: 460px;
-  object-fit: cover;
+.poster-gallery a {
+  position: relative;
+  min-width: 0;
   border-radius: 0.75rem;
-  scroll-snap-align: start;
+  overflow: hidden;
   background: var(--md-default-fg-color--lightest);
 }
 
-.poster-gallery img:first-child {
-  width: min(82vw, 390px);
+.poster-gallery img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.poster-gallery a:nth-child(1),
+.poster-gallery a:nth-child(6) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.poster-gallery a:nth-child(4),
+.poster-gallery a:nth-child(9) {
+  grid-column: span 2;
+}
+
+.poster-gallery a:hover img,
+.poster-gallery a:focus-visible img {
+  transform: scale(1.02);
+}
+
+.poster-gallery a:focus-visible {
+  outline: 0.15rem solid var(--flamingo-pink);
+  outline-offset: 0.15rem;
 }
 
 .gallery-hint {
@@ -370,10 +389,32 @@
 
 /* Lista e protestave */
 
-.protest-list {
-  overflow: hidden;
+.protest-archive {
   border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+.protest-archive summary {
+  padding: 1rem 1.1rem;
+  color: var(--flamingo-pink);
+  font-weight: 700;
+  cursor: pointer;
+  list-style-position: inside;
+  transition: background-color 0.15s ease;
+}
+
+.protest-archive summary:hover,
+.protest-archive summary:focus-visible {
+  background: var(--flamingo-pink-light);
+}
+
+.protest-archive[open] summary {
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.protest-list {
+  overflow: hidden;
 }
 
 .protest-row {
@@ -428,10 +469,20 @@
     padding: 1.2rem 1rem;
   }
 
-  .poster-gallery img,
-  .poster-gallery img:first-child {
-    width: 82vw;
-    height: 430px;
+  .poster-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 130px;
+  }
+
+  .poster-gallery a:nth-child(1),
+  .poster-gallery a:nth-child(6) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .poster-gallery a:nth-child(4),
+  .poster-gallery a:nth-child(9) {
+    grid-column: span 1;
   }
 
   .protest-row {

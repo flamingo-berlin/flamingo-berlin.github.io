@@ -1,9 +1,9 @@
 ---
-title: Reago
+title: Vepro
 description: Mënyra konkrete për të mbështetur Flamingo Revolution.
 ---
 
-# Reago
+# Vepro
 
 Çdo kontribut ka rëndësi. Nuk është e nevojshme të bësh gjithçka - edhe një veprim i vetëm ndihmon që zëri i qytetarëve të dëgjohet. Më poshtë janë katër mënyra konkrete për të vepruar.
 

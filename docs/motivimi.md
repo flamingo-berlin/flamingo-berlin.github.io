@@ -24,16 +24,10 @@ Memo mbi **Flamingo Revolution** përmbledh zhvillimin e lëvizjes dhe dokumento
 
 ## Raporti (në Anglisht)
 
-Dokumenti mund të lexohet direkt në këtë faqe ose të shkarkohet në format PDF.
+Lexoje raportin si faqe të përshtatur për telefon, tablet dhe kompjuter. Dokumenti origjinal mbetet i disponueshëm për shkarkim.
 
-<iframe
-    src="../assets/documents/Memo-FlamingoRevolution.pdf"
-    width="100%"
-    height="900"
-    style="border:1px solid var(--md-default-fg-color--lightest); border-radius:12px;">
-</iframe>
-
-[:material-download: Shkarko Memon (PDF)](../assets/documents/Memo-FlamingoRevolution.pdf){ .md-button .md-button--primary }
+[:material-book-open-page-variant: Lexo Memon](memo.md){ .md-button .md-button--primary }
+[:material-download: Shkarko PDF-në](assets/documents/Memo-FlamingoRevolution.pdf){ .md-button }
 
 ---
 
