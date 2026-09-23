@@ -14,8 +14,8 @@ export interface Protest {
   major?: boolean;
 }
 
-// #16 is the current/latest protest, featured separately on the homepage;
-// the rest form the archive, newest first.
+// #16 is the latest protest and is also reused as the first archive entry,
+// keeping its date, location and Instagram link consistent in both places.
 export const latestProtest: Protest = {
   number: 16,
   date: { sq: '20 shtator 2026', en: '20 September 2026', de: '20. September 2026' },
@@ -28,6 +28,7 @@ export const latestProtest: Protest = {
 };
 
 export const protestArchive: Protest[] = [
+  latestProtest,
   {
     number: 15,
     date: { sq: '13 shtator 2026', en: '13 September 2026', de: '13. September 2026' },

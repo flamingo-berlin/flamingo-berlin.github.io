@@ -26,11 +26,24 @@ const naturePhotos = {
   sqepbiza: { author: 'Andreas Trepte', license: 'CC BY-SA 2.5', licenseUrl: 'https://creativecommons.org/licenses/by-sa/2.5/', source: 'https://commons.wikimedia.org/wiki/File:Pied_Avocet_Recurvirostra_avosetta.jpg' },
   gaforre: { author: 'Pasztilla (Attila Terbócs)', license: 'CC BY-SA 4.0', licenseUrl: CC_BY_SA, source: 'https://commons.wikimedia.org/wiki/File:Narta_Lagoon,_Albania_%E2%80%93_Crab_01.jpg' },
   bregdeti: { author: 'Wildwheelwildsoul', license: 'CC0', licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/', source: 'https://commons.wikimedia.org/wiki/File:The_Vjosa-Narte_Protected_Landscape_rocks.jpg' },
+  grykederdhja: { author: 'Pasztilla (Attila Terbócs)', license: 'CC BY-SA 4.0', licenseUrl: CC_BY_SA, source: 'https://commons.wikimedia.org/wiki/File:Zv%C3%ABrnec,_Albania_%E2%80%93_Narta_Lagoon_01.jpg' },
+  'hero-flamingo': { author: 'Arbenllapashtica', license: 'CC BY 4.0', licenseUrl: CC_BY, source: 'https://commons.wikimedia.org/wiki/File:Laguna_e_Nart%C3%ABs_-_Vlor%C3%AB_(25).jpg' },
 } as const;
 
 const natureTiles = [
   {
-    photo: 'flamingo-flock', wide: true,
+    photo: 'laguna', wide: true,
+    alt: { sq: 'Laguna e Nartës me gadishullin dhe malet në sfond', en: 'Narta Lagoon with its peninsula and mountains in the background', de: 'Die Narta-Lagune mit Halbinsel und Bergen im Hintergrund' },
+    kicker: { sq: 'Zemra e peizazhit', en: 'Heart of the landscape', de: 'Herz der Landschaft' },
+    title: { sq: 'Laguna e Nartës', en: 'Narta Lagoon', de: 'Narta-Lagune' },
+    text: {
+      sq: 'Një lagunë bregdetare pranë Vlorës dhe habitat kyç për shpendët migratorë.',
+      en: 'A coastal lagoon near Vlorë and a key habitat for migratory birds.',
+      de: 'Eine Küstenlagune bei Vlorë und ein wichtiger Lebensraum für Zugvögel.',
+    },
+  },
+  {
+    photo: 'flamingo-flock',
     alt: { sq: 'Tufë flamingosh mbi ujin e Lagunës së Nartës', en: 'A flock of flamingos over the water of Narta Lagoon', de: 'Ein Flamingoschwarm über dem Wasser der Narta-Lagune' },
     kicker: { sq: 'Simboli i lëvizjes', en: 'Symbol of the movement', de: 'Symbol der Bewegung' },
     title: { sq: 'Flamingot e Nartës', en: 'The flamingos of Narta', de: 'Die Flamingos von Narta' },
@@ -104,6 +117,28 @@ const natureTiles = [
       sq: 'Shkëmbinj bregdetarë brenda Peizazhit të Mbrojtur Vjosë–Nartë.',
       en: 'Coastal rocks within the Vjosë–Nartë Protected Landscape.',
       de: 'Küstenfelsen innerhalb der geschützten Landschaft Vjosë–Nartë.',
+    },
+  },
+  {
+    photo: 'grykederdhja', wide: true,
+    alt: { sq: 'Kanali i ujit ku Laguna e Nartës lidhet me detin Adriatik pranë Zvërnecit', en: 'The water channel connecting Narta Lagoon with the Adriatic near Zvërnec', de: 'Der Wasserkanal, der die Narta-Lagune bei Zvërnec mit der Adria verbindet' },
+    kicker: { sq: 'Laguna dhe deti', en: 'Lagoon and sea', de: 'Lagune und Meer' },
+    title: { sq: 'Ku laguna takon Adriatikun', en: 'Where the lagoon meets the Adriatic', de: 'Wo die Lagune auf die Adria trifft' },
+    text: {
+      sq: 'Lidhja ujore mes lagunës dhe detit, pranë ishullit të Zvërnecit.',
+      en: 'The water connection between the lagoon and the sea, near Zvërnec Island.',
+      de: 'Die Wasserverbindung zwischen Lagune und Meer nahe der Insel Zvërnec.',
+    },
+  },
+  {
+    photo: 'hero-flamingo',
+    alt: { sq: 'Flamingo në fluturim mbi Lagunën e Nartës', en: 'A flamingo in flight over Narta Lagoon', de: 'Ein Flamingo im Flug über der Narta-Lagune' },
+    kicker: { sq: 'Në fluturim', en: 'In flight', de: 'Im Flug' },
+    title: { sq: 'Flamingo mbi lagunë', en: 'Flamingo over the lagoon', de: 'Flamingo über der Lagune' },
+    text: {
+      sq: 'Flamingot përdorin ujërat e cekëta të lagunës për t’u ushqyer dhe pushuar.',
+      en: 'Flamingos use the lagoon’s shallow waters to feed and rest.',
+      de: 'Flamingos nutzen das flache Wasser der Lagune zum Fressen und Rasten.',
     },
   },
 ] as const;

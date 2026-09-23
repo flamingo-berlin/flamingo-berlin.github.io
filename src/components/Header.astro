@@ -28,7 +28,7 @@ const navItems = [
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href={localePath(lang, '/')} aria-label="Flamingo Berlin">
-      <span class="brand-mark"><img src="/assets/images/logo.png" alt="" width="40" height="40" /></span>
+      <span class="brand-mark"><img src="/assets/flamingo-logo.png" alt="" width="1254" height="1254" /></span>
       <span class="brand-name">Flamingo <em>Berlin</em></span>
     </a>
 
@@ -82,6 +82,18 @@ const navItems = [
     });
   });
 
+  const closeNavigation = () => {
+    nav?.classList.remove('nav-open');
+    toggle?.setAttribute('aria-expanded', 'false');
+  };
+
+  document.addEventListener('click', (event) => {
+    const header = document.querySelector<HTMLElement>('.site-header');
+    if (header && !header.contains(event.target as Node)) closeNavigation();
+  });
+
+  window.matchMedia('(min-width: 781px)').addEventListener('change', closeNavigation);
+
   const langSwitch = document.querySelector<HTMLElement>('.lang-switch');
   const langButton = langSwitch?.querySelector<HTMLButtonElement>('.lang-current');
 
@@ -101,7 +113,11 @@ const navItems = [
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeLangMenu();
+    if (event.key === 'Escape') {
+      closeLangMenu();
+      closeNavigation();
+      toggle?.focus();
+    }
   });
 
   const header = document.querySelector<HTMLElement>('.site-header');
