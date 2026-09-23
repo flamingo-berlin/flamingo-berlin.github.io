@@ -14,6 +14,8 @@ export interface Protest {
   major?: boolean;
 }
 
+const instagramProfile = 'https://www.instagram.com/flamingosofberlin/';
+
 // #16 is the latest protest and is also reused as the first archive entry,
 // keeping its date, location and Instagram link consistent in both places.
 export const latestProtest: Protest = {
@@ -24,7 +26,7 @@ export const latestProtest: Protest = {
     en: 'Opposite Rotes Rathaus, Rathausstraße 15, Berlin · 16:00',
     de: 'Gegenüber dem Roten Rathaus, Rathausstraße 15, Berlin · 16:00 Uhr',
   },
-  href: 'https://www.instagram.com/p/DdTcvpnkZam/',
+  href: instagramProfile,
 };
 
 export const protestArchive: Protest[] = [
@@ -33,31 +35,31 @@ export const protestArchive: Protest[] = [
     number: 15,
     date: { sq: '13 shtator 2026', en: '13 September 2026', de: '13. September 2026' },
     location: { sq: 'Berlin', en: 'Berlin', de: 'Berlin' },
-    href: 'https://www.instagram.com/flamingosofberlin',
+    href: instagramProfile,
   },
   {
     number: 14,
     date: { sq: '6 shtator 2026', en: '6 September 2026', de: '6. September 2026' },
     location: { sq: 'Berlin', en: 'Berlin', de: 'Berlin' },
-    href: 'https://www.instagram.com/flamingosofberlin',
+    href: instagramProfile,
   },
   {
     number: 13,
     date: { sq: '30 gusht 2026', en: '30 August 2026', de: '30. August 2026' },
     location: { sq: 'Berlin', en: 'Berlin', de: 'Berlin' },
-    href: 'https://www.instagram.com/flamingosofberlin',
+    href: instagramProfile,
   },
   {
     number: 12,
     date: { sq: '23 gusht 2026', en: '23 August 2026', de: '23. August 2026' },
     location: { sq: 'Berlin', en: 'Berlin', de: 'Berlin' },
-    href: 'https://www.instagram.com/p/DcQABySDLjh/',
+    href: instagramProfile,
   },
   {
     number: 11,
     date: { sq: '16 gusht 2026', en: '16 August 2026', de: '16. August 2026' },
     location: { sq: 'Berlin', en: 'Berlin', de: 'Berlin' },
-    href: 'https://www.instagram.com/p/DcIkpcREYAd/',
+    href: instagramProfile,
   },
   {
     number: 10,
@@ -67,43 +69,43 @@ export const protestArchive: Protest[] = [
       en: 'Besselpark, Friedrichstraße 24 · 18:00',
       de: 'Besselpark, Friedrichstraße 24 · 18:00 Uhr',
     },
-    href: 'https://www.instagram.com/flamingosofberlin',
+    href: instagramProfile,
   },
   {
     number: 9,
     date: { sq: '2 gusht 2026', en: '2 August 2026', de: '2. August 2026' },
     location: { sq: 'Berlin', en: 'Berlin', de: 'Berlin' },
-    href: 'https://www.instagram.com/p/DbcvILENGMu/',
+    href: instagramProfile,
   },
   {
     number: 8,
     date: { sq: '26 korrik 2026', en: '26 July 2026', de: '26. Juli 2026' },
     location: { sq: 'Berlin', en: 'Berlin', de: 'Berlin' },
-    href: 'https://www.instagram.com/stories/highlights/18129948394636427/',
+    href: instagramProfile,
   },
   {
     number: 7,
     date: { sq: '19 korrik 2026', en: '19 July 2026', de: '19. Juli 2026' },
     location: { sq: 'Berlin', en: 'Berlin', de: 'Berlin' },
-    href: 'https://www.instagram.com/stories/highlights/18109596416514560/',
+    href: instagramProfile,
   },
   {
     number: 6,
     date: { sq: '12 korrik 2026', en: '12 July 2026', de: '12. Juli 2026' },
     location: { sq: 'Berlin', en: 'Berlin', de: 'Berlin' },
-    href: 'https://www.instagram.com/stories/highlights/18098928101221771/',
+    href: instagramProfile,
   },
   {
     number: 5,
     date: { sq: '28 qershor 2026', en: '28 June 2026', de: '28. Juni 2026' },
     location: { sq: 'Berlin', en: 'Berlin', de: 'Berlin' },
-    href: 'https://www.instagram.com/stories/highlights/18117721060829627/',
+    href: instagramProfile,
   },
   {
     number: 4,
     date: { sq: '21 qershor 2026', en: '21 June 2026', de: '21. Juni 2026' },
     location: { sq: 'Berlin', en: 'Berlin', de: 'Berlin' },
-    href: 'https://www.instagram.com/stories/highlights/18012460514716002/',
+    href: instagramProfile,
   },
   {
     number: 3,
@@ -113,13 +115,13 @@ export const protestArchive: Protest[] = [
       en: "During Edi Rama's visit",
       de: 'Während des Besuchs von Edi Rama',
     },
-    href: 'https://www.instagram.com/stories/highlights/18021703973676741/',
+    href: instagramProfile,
   },
   {
     number: 2,
     date: { sq: '14 qershor 2026', en: '14 June 2026', de: '14. Juni 2026' },
     location: { sq: 'Berlin', en: 'Berlin', de: 'Berlin' },
-    href: 'https://www.instagram.com/stories/highlights/18134007385502026/',
+    href: instagramProfile,
   },
   {
     number: 1,
@@ -129,7 +131,7 @@ export const protestArchive: Protest[] = [
       en: 'Protest near the Albanian Embassy',
       de: 'Protest nahe der albanischen Botschaft',
     },
-    href: 'https://www.instagram.com/stories/highlights/17892472566491242/',
+    href: instagramProfile,
     major: true,
   },
 ];
