@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionBand from '../SectionBand.astro';
+import type { Locale } from '../../i18n/ui';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+
+const letterParagraphs = [
+  '**Betreff:** Bitte um Aufmerksamkeit für Umwelt- und Rechtsstaatlichkeitsfragen in Albanien',
+  'Sehr geehrte/r Abgeordnete/r des Deutschen Bundestages,',
+  'ich wende mich als in Deutschland lebende albanische Bürgerin / als in Deutschland lebender albanischer Bürger an Sie, um meine Sorge über die jüngsten Entwicklungen im Zusammenhang mit Naturschutzgebieten, dem Umweltschutz und der öffentlichen Entscheidungsfindung in Albanien zum Ausdruck zu bringen.',
+  'Albanien ist Beitrittskandidat der Europäischen Union. Die Achtung der Rechtsstaatlichkeit, der Schutz der Umwelt, Transparenz sowie eine echte Beteiligung der Öffentlichkeit gehören zu den grundlegenden Werten der Europäischen Union und sind wesentliche Bestandteile des EU-Beitrittsprozesses.',
+  'Die jüngsten gesetzlichen und administrativen Entwicklungen haben bei vielen Bürgerinnen und Bürgern sowie zivilgesellschaftlichen Organisationen Bedenken hinsichtlich des Schutzes des albanischen Naturerbes und der Transparenz staatlicher Entscheidungen ausgelöst.',
+  'Ich möchte Sie daher höflich bitten, diese Entwicklungen zu verfolgen und – sofern Sie es für angemessen halten – diese Themen im Rahmen Ihrer parlamentarischen Arbeit sowie in den Beziehungen Deutschlands und der Europäischen Union zu Albanien zu berücksichtigen.',
+  'Vielen Dank für Ihre Zeit und Ihre Aufmerksamkeit.',
+  'Mit freundlichen Grüßen\n*Name*',
+];
+
+const copy = {
+  sq: {
+    title: 'Letra për Deputetët',
+    description: 'Model letre për deputetët e Bundestagut Gjerman.',
+    kicker: 'Vepro · Hapi 3',
+    h1: 'Letra për Deputetët',
+    intro: 'Një mënyrë tjetër për të mbështetur këtë kauzë është të informoni deputetin që ju përfaqëson në Bundestagun Gjerman. Deputetët gjermanë kanë mundësi të ngrenë shqetësime që lidhen me mbrojtjen e mjedisit, shtetin e së drejtës dhe procesin e integrimit europian të Shqipërisë. Një letër e shkurtër dhe e argumentuar mund të ndihmojë që këto çështje të marrin më shumë vëmendje.',
+    stepsHeading: 'Si të veprosh?',
+    steps: ['Gjej deputetin që përfaqëson zonën ku jeton.', 'Personalizo modelin e letrës me disa fjali personale.', 'Dërgoje me email.', 'Nëse merr përgjigje, njofto edhe komunitetin tonë.'],
+    pointsHeading: 'Çfarë mund të përmendësh?',
+    points: ['rëndësinë e zonave të mbrojtura në Shqipëri', 'mbrojtjen e biodiversitetit dhe trashëgimisë natyrore', 'transparencën dhe konsultimin publik', 'respektimin e shtetit të së drejtës', 'rëndësinë e këtyre çështjeve në procesin e integrimit europian'],
+    templateHeading: 'Model letre (Gjermanisht)',
+  },
+  en: {
+    title: 'Write to MPs',
+    description: 'Template letter to members of the German Bundestag.',
+    kicker: 'Take action · Step 3',
+    h1: 'Write to your MP',
+    intro: 'Another way to support the cause is to inform the member of the German Bundestag who represents you. German MPs can raise concerns about environmental protection, the rule of law and Albania’s European integration. A concise, well-reasoned letter can help these issues receive more attention.',
+    stepsHeading: 'How to proceed',
+    steps: ['Find the MP who represents your area.', 'Personalize the template with a few sentences.', 'Send it by email.', 'If you receive a response, let our community know.'],
+    pointsHeading: 'Points you can mention',
+    points: ['The importance of Albania’s protected areas', 'Protection of biodiversity and natural heritage', 'Transparency and public consultation', 'Respect for the rule of law', 'The relevance of these issues to EU integration'],
+    templateHeading: 'Letter template (German)',
+  },
+  de: {
+    title: 'An Abgeordnete schreiben',
+    description: 'Musterschreiben an Abgeordnete des Deutschen Bundestages.',
+    kicker: 'Aktiv werden · Schritt 3',
+    h1: 'An Abgeordnete schreiben',
+    intro: 'Du kannst die Sache unterstützen, indem du die Abgeordnete oder den Abgeordneten informierst, die oder der deinen Wahlkreis im Deutschen Bundestag vertritt. Bundestagsabgeordnete können Fragen des Umweltschutzes, der Rechtsstaatlichkeit und der europäischen Integration Albaniens aufgreifen. Ein kurzes, gut begründetes Schreiben kann diesen Themen mehr Aufmerksamkeit verschaffen.',
+    stepsHeading: 'Vorgehen',
+    steps: ['Finde die Abgeordnete oder den Abgeordneten deines Wahlkreises.', 'Ergänze das Musterschreiben um einige persönliche Sätze.', 'Sende es per E-Mail.', 'Informiere unsere Community, wenn du eine Antwort erhältst.'],
+    pointsHeading: 'Mögliche Themen',
+    points: ['Bedeutung der Schutzgebiete in Albanien', 'Schutz von Biodiversität und Naturerbe', 'Transparenz und öffentliche Beteiligung', 'Achtung der Rechtsstaatlichkeit', 'Bedeutung dieser Fragen für den EU-Beitrittsprozess'],
+    templateHeading: 'Musterschreiben',
+  },
+} as const;
+
+const t = copy[lang];
+---
+
+<BaseLayout lang={lang} title={`${t.title} · Flamingo Berlin`} description={t.description}>
+  <SectionBand tone="tint" class="page-header">
+    <div class="section-head">
+      <p class="eyebrow">{t.kicker}</p>
+      <h1>{t.h1}</h1>
+      <p class="lede">{t.intro}</p>
+    </div>
+  </SectionBand>
+
+  <SectionBand tone="grey">
+    <h2>{t.stepsHeading}</h2>
+    <ol>
+      {t.steps.map((step) => <li>{step}</li>)}
+    </ol>
+  </SectionBand>
+
+  <SectionBand tone="paper">
+    <h2>{t.pointsHeading}</h2>
+    <ul>
+      {t.points.map((point) => <li>{point}</li>)}
+    </ul>
+  </SectionBand>
+
+  <SectionBand tone="tint">
+    <h2>{t.templateHeading}</h2>
+    <blockquote class="letter-quote">
+      {letterParagraphs.map((para) => (
+        <p set:html={para.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>').replace(/\n/g, '<br>')} />
+      ))}
+    </blockquote>
+  </SectionBand>
+</BaseLayout>

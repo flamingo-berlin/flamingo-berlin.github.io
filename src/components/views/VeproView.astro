@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionBand from '../SectionBand.astro';
+import { localePath } from '../../i18n/utils';
+import type { Locale } from '../../i18n/ui';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+
+const copy = {
+  sq: {
+    title: 'Vepro',
+    description: 'Mënyra konkrete për të mbështetur Flamingo Revolution.',
+    kicker: 'Nga ku të nisësh',
+    h1: 'Vepro',
+    intro: 'Çdo kontribut ka rëndësi. Nuk është e nevojshme të bësh gjithçka — edhe një veprim i vetëm ndihmon që zëri i qytetarëve të dëgjohet. Më poshtë janë tri mënyra konkrete për të vepruar.',
+    step: 'Hapi',
+    cards: [
+      { title: 'Shpërndaje', text: 'Ndihmo që informacioni, materialet dhe lajmet të arrijnë te sa më shumë njerëz.', href: 'shperndaje' },
+      { title: 'Shkruaji Ambasadës', text: 'Dërgo një letër Ambasadës së Republikës së Shqipërisë për të shprehur shqetësimet e tua.', href: 'ambasadat' },
+      { title: 'Shkruaji Deputetit', text: 'Informo deputetin që të përfaqëson në Bundestag mbi zhvillimet në Shqipëri.', href: 'deputetet' },
+    ],
+    nextHeading: 'Çfarë ndodh më pas?',
+    nextText: 'Sa më shumë njerëz të shpërndajnë informacionin dhe të kontaktojnë institucionet, aq më e madhe bëhet vëmendja publike ndaj kësaj çështjeje. Çdo veprim është një hap drejt një zëri qytetar më të fortë.',
+  },
+  en: {
+    title: 'Take action',
+    description: 'Practical ways to support the Flamingo Revolution.',
+    kicker: 'Where to start',
+    h1: 'Take action',
+    intro: 'Every contribution matters. You do not need to do everything—even one action helps citizens’ voices be heard. Here are three practical ways to help.',
+    step: 'Step',
+    cards: [
+      { title: 'Share', text: 'Help information, resources and news reach more people.', href: 'shperndaje' },
+      { title: 'Write to the Embassy', text: 'Send a letter to the Embassy of the Republic of Albania to express your concerns.', href: 'ambasadat' },
+      { title: 'Write to your MP', text: 'Inform the member of the Bundestag who represents you about developments in Albania.', href: 'deputetet' },
+    ],
+    nextHeading: 'What happens next?',
+    nextText: 'As more people share information and contact institutions, public attention grows. Every action is a step toward a stronger civic voice.',
+  },
+  de: {
+    title: 'Aktiv werden',
+    description: 'Konkrete Möglichkeiten, die Flamingo Revolution zu unterstützen.',
+    kicker: 'Womit du anfangen kannst',
+    h1: 'Aktiv werden',
+    intro: 'Jeder Beitrag zählt. Du musst nicht alles tun — schon eine einzelne Handlung hilft, die Stimmen der Bürgerinnen und Bürger hörbar zu machen. Hier sind drei konkrete Möglichkeiten.',
+    step: 'Schritt',
+    cards: [
+      { title: 'Teilen', text: 'Hilf mit, Informationen, Materialien und Nachrichten mehr Menschen zugänglich zu machen.', href: 'shperndaje' },
+      { title: 'An die Botschaft schreiben', text: 'Schreibe der Botschaft der Republik Albanien und bringe deine Bedenken zum Ausdruck.', href: 'ambasadat' },
+      { title: 'An Abgeordnete schreiben', text: 'Informiere deine Vertretung im Bundestag über die Entwicklungen in Albanien.', href: 'deputetet' },
+    ],
+    nextHeading: 'Was geschieht danach?',
+    nextText: 'Je mehr Menschen Informationen teilen und Institutionen kontaktieren, desto stärker wird die öffentliche Aufmerksamkeit. Jede Handlung stärkt die zivilgesellschaftliche Stimme.',
+  },
+} as const;
+
+const t = copy[lang];
+---
+
+<BaseLayout lang={lang} title={`${t.title} · Flamingo Berlin`} description={t.description}>
+  <SectionBand tone="tint" class="page-header">
+    <div class="section-head">
+      <p class="eyebrow">{t.kicker}</p>
+      <h1>{t.h1}</h1>
+      <p class="lede">{t.intro}</p>
+    </div>
+
+    <div class="path-grid">
+      {t.cards.map((card, index) => (
+        <a class="path" href={localePath(lang, `/vepro/${card.href}/`)}>
+          <span class="path-kicker">{t.step} {index + 1}</span>
+          <h3>{card.title}</h3>
+          <p>{card.text}</p>
+          <i aria-hidden="true">→</i>
+        </a>
+      ))}
+    </div>
+  </SectionBand>
+
+  <SectionBand tone="grey">
+    <h2>{t.nextHeading}</h2>
+    <p>{t.nextText}</p>
+  </SectionBand>
+</BaseLayout>

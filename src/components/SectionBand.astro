@@ -1,0 +1,13 @@
+---
+interface Props {
+  tone?: 'tint' | 'grey' | 'paper';
+  class?: string;
+  id?: string;
+}
+
+const { tone = 'paper', class: className, id } = Astro.props;
+---
+
+<div id={id} class:list={['section-band', `section-band--${tone}`, className]}>
+  <slot />
+</div>

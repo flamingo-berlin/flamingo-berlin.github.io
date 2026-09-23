@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionBand from '../SectionBand.astro';
+import StatRow from '../StatRow.astro';
+import type { Locale } from '../../i18n/ui';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+
+// The memo is published only in English in the original mkdocs site (a fixed
+// report), so its body stays untranslated across all three locale chromes.
+const risks = [
+  { risk: 'Disturbance of migratory routes, habitat degradation and reduced breeding and wintering success', severity: 'Very high', scope: 'Narta Lagoon ecosystem and Adriatic Flyway' },
+  { risk: 'Permanent loss and fragmentation of wetlands, coastal forests and wildlife habitats', severity: 'Very high', scope: 'Local and regional' },
+  { risk: 'Roads, utilities, marinas and services increasing pollution, urbanization and disturbance', severity: 'High', scope: 'Landscape-wide' },
+  { risk: 'Privatization of accessible coastal landscapes and restrictions on traditional public uses', severity: 'High', scope: 'Coast, beaches and surrounding public spaces' },
+];
+
+const timeline = [
+  { year: '2015', text: 'Law No. 55/2015 on Strategic Investments introduces fast-track procedures and special legal status.' },
+  { year: '2021', text: 'Construction of Vlora International Airport begins inside the Vjosa–Narta Protected Landscape; conservation groups and scientists raise concerns and pursue legal action.' },
+  { year: '2023', text: 'Airport construction continues. Albania creates the Vjosa Wild River National Park while warnings continue about cumulative impacts on Vjosa–Narta.' },
+  { year: '2024', text: 'Large tourism developments are announced for Sazan and Zvërnec. Parliament changes the Law on Protected Areas, permitting some tourism and strategic-investment activity inside protected areas.' },
+  { year: '2025', text: 'The Sazan development receives Strategic Investor status. Parliament adopts the “Mountain Package”; legal challenges and public campaigns intensify.' },
+  { year: '2026', text: 'Construction begins in Zvërnec, prompting protests in Albania and more than 30 diaspora cities. On 17 June, the European Parliament calls for restored protections and a construction moratorium.' },
+];
+
+const references = [
+  { label: 'BIRN / Reporter.al: The investors behind the Trump family’s Albanian resort', href: 'https://www.reporter.al/en/2026/05/29/the-investors-behind-the-trump-familys-albanian-resort/' },
+  { label: 'Citizens Channel: Nga ligji te gardhi me gjemba', href: 'https://citizens.al/2026/06/01/nga-ligji-te-gardhi-me-gjemba-si-u-dorezuan-zonat-e-mbrojtura/' },
+  { label: 'PPNEA: Save Vjosa–Narta', href: 'https://ppnea.org/save-vjosa-narta/?lang=en' },
+  { label: 'BirdLife International: Narta Lagoon factsheet', href: 'https://datazone.birdlife.org/site/factsheet/2903-narta-lagoon' },
+  { label: 'Le Monde: Europe’s last natural delta threatened by luxury tourism', href: 'https://www.lemonde.fr/en/environment/article/2024/06/17/in-albania-europe-s-last-natural-delta-threatened-by-donald-trump-s-son-in-law-s-plans_6674966_114.html' },
+  { label: 'Citizens Channel: Dhuna në Zvërnec ndez protestën në Tiranë', href: 'https://citizens.al/2026/05/31/shqiperia-nuk-shitet-dhuna-ne-zvernec-ndez-protesten-ne-tirane/' },
+  { label: 'Mbro Natyrën', href: 'https://mbronatyren.europeishere.al/' },
+  { label: 'BirdLife: European Parliament backs the movement’s mission', href: 'https://www.birdlife.org/news/2026/06/17/press-release-european-parliament-backs-nature-as-albanias-flamingo-revolution-reaches-strasbourg/' },
+  { label: 'Documented claims and government statements', href: 'https://narta-ten.vercel.app/#top' },
+  { label: 'Citizens Channel: The Albanian Files', href: 'https://citizens.al/en/2026/06/25/the-albanian-files-harta-e-resorteve-mbi-natyren-shqiptare/' },
+  { label: 'Project documents archive', href: 'https://archive.org/details/sazan-2-clean/Sazan1_clean/' },
+];
+---
+
+<BaseLayout lang={lang} title="Flamingo Revolution Memo · Flamingo Berlin" description="A mobile-friendly version of the Flamingo Revolution memo.">
+  <SectionBand tone="tint" class="page-header">
+    <div class="section-head">
+      <p class="eyebrow">Flamingo Revolution · Vjosa–Narta</p>
+      <h1>Memo on the Flamingo Revolution</h1>
+      <p class="memo-updated">Last updated: 29 June 2026</p>
+    </div>
+  </SectionBand>
+
+  <SectionBand tone="grey">
+    <h2>The unProtected Area</h2>
+    <p>The Vjosa–Narta region is one of Albania’s most valuable coastal landscapes and one of its most important biodiversity hotspots. Its lagoons, wetlands, coastal forests, marine habitats and protected areas form a unique ecological corridor along the Adriatic coast.</p>
+    <StatRow stats={[
+      { number: '42 km²', label: 'Lagoon and wetland habitat' },
+      { number: '194 km²', label: 'Protected landscape: delta, forest and coast' },
+      { number: '200+', label: 'Bird species recorded' },
+    ]} />
+    <ul>
+      <li>Thousands of flamingos observed annually</li>
+      <li>One of Albania’s most important wetlands for migratory birds</li>
+      <li>Part of the Adriatic Flyway between Europe and Africa</li>
+    </ul>
+    <p>Since late April 2026, construction activities have taken place in the Zvërnec area. Residents, environmental organizations and civil-society groups say there has been insufficient public information about the project’s scope, environmental studies, legal basis and potential impacts.</p>
+
+    <h3>Principal risks</h3>
+    <table>
+      <thead><tr><th>Risk</th><th>Severity</th><th>Scope</th></tr></thead>
+      <tbody>
+        {risks.map((row) => (
+          <tr><td>{row.risk}</td><td>{row.severity}</td><td>{row.scope}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </SectionBand>
+
+  <SectionBand tone="paper">
+    <h2>The Flamingo Revolution</h2>
+    <p>Peaceful protests have continued across Albania since early May in response to the construction. Local opposition became a broad environmental and civic movement advocating for environmental protection, transparency, the rule of law and democratic accountability.</p>
+    <p>The movement includes environmental organizations such as PPNEA, EcoAlbania, EuroNatur, BirdLife International and Riverwatch; Albanian and international scientists; local communities; civil-society and youth groups; artists; public figures; and Albanian diaspora communities across Europe and North America.</p>
+
+    <h3>Movement overview</h3>
+    <ul>
+      <li>More than 30 consecutive days of coordinated peaceful protests across Albania</li>
+      <li>Solidarity demonstrations in more than 30 Albanian diaspora cities</li>
+      <li>Tens of thousands mobilized through demonstrations, marches and public events</li>
+      <li>Multiple legal complaints and court actions by environmental and civil-society organizations</li>
+    </ul>
+
+    <h3>What protesters demand</h3>
+    <ol>
+      <li>The resignation of the Government of Albania.</li>
+      <li>Repeal of the 2024 amendments to the Law on Protected Areas.</li>
+      <li>Repeal of the Strategic Investors legal framework.</li>
+      <li>Repeal of the Mountains Package (<em>Paketa e Maleve</em>).</li>
+      <li>Repeal of the amendments to the Law on Cultural Heritage.</li>
+    </ol>
+    <p>On 17 June 2026, the European Parliament called for the repeal of the 2024 amendments to the Law on Protected Areas and an immediate moratorium on new construction within protected areas.</p>
+  </SectionBand>
+
+  <SectionBand tone="tint">
+    <h2>Timeline</h2>
+    <ol class="timeline">
+      {timeline.map((row) => (
+        <li><time>{row.year}</time><p>{row.text}</p></li>
+      ))}
+    </ol>
+  </SectionBand>
+
+  <SectionBand tone="grey">
+    <h2>References</h2>
+    <ol class="references">
+      {references.map((ref) => (
+        <li><a href={ref.href} target="_blank" rel="noreferrer">{ref.label}</a></li>
+      ))}
+    </ol>
+  </SectionBand>
+
+  <SectionBand tone="paper" class="cta-banner">
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/assets/documents/Memo-FlamingoRevolution.pdf">⬇ Download the original memo with appendices (PDF)</a>
+    </div>
+  </SectionBand>
+</BaseLayout>

@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionBand from '../SectionBand.astro';
+import { localePath } from '../../i18n/utils';
+import type { Locale } from '../../i18n/ui';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+
+const copy = {
+  sq: {
+    title: 'Motivimi',
+    kicker: 'Pse protestojmë',
+    h1: 'Motivimi',
+    intro: 'Flamingo Berlin lindi si përgjigje ndaj zhvillimeve që rrezikojnë natyrën, interesin publik dhe transparencën në Shqipëri. Protestat nuk përfaqësojnë vetëm kundërshtimin ndaj një projekti të vetëm, por një kërkesë më të gjerë për respektimin e ligjit, mbrojtjen e zonave të mbrojtura dhe një proces vendimmarrjeje të hapur e të përgjegjshëm.',
+    memoHeading: 'Çfarë do të gjeni në këtë memo?',
+    memoIntro: 'Memo mbi Flamingo Revolution përmbledh zhvillimin e lëvizjes dhe dokumenton faktet kryesore mbi të cilat mbështeten protestat. Ai përfshin:',
+    memoPoints: [
+      '🌿 rëndësinë ekologjike të Vjosa–Nartës',
+      '📜 historikun e zhvillimeve dhe vendimeve kryesore',
+      '📅 kronologjinë e protestave',
+      '📢 kërkesat e protestuesve',
+      '📚 dokumente, burime dhe referenca mbështetëse',
+    ],
+    reportHeading: 'Raporti (në Anglisht)',
+    reportLead: 'Lexoje raportin si faqe të përshtatur për telefon, tablet dhe kompjuter. Dokumenti origjinal mbetet i disponueshëm për shkarkim.',
+    readMemo: 'Lexo Memon',
+    downloadPdf: 'Shkarko PDF-në',
+    mapHeading: 'Harta e protestave',
+    mapLead: 'Lëvizja Flamingo Revolution është shtrirë në qytete të ndryshme në Shqipëri, Europë dhe Amerikën e Veriut. Përdorni hartën interaktive për të parë qytetet pjesëmarrëse, protestat e zhvilluara dhe aktivitetet e ardhshme.',
+    mapOpen: 'Hape hartën në ekran të plotë',
+  },
+  en: {
+    title: 'Motivation',
+    kicker: 'Why we protest',
+    h1: 'Motivation',
+    intro: 'Flamingo Berlin began in response to developments threatening nature, the public interest and transparency in Albania. The protests are not merely opposition to one project; they are a broader call to uphold the law, protect designated areas and ensure open, accountable decision-making.',
+    memoHeading: 'What does the memo contain?',
+    memoIntro: 'The Flamingo Revolution memo describes the movement and documents the main facts behind the protests. It covers:',
+    memoPoints: [
+      '🌿 the ecological importance of Vjosa–Narta',
+      '📜 the history of key developments and decisions',
+      '📅 a chronology of the protests',
+      '📢 the protesters’ demands',
+      '📚 supporting documents, sources and references',
+    ],
+    reportHeading: 'Report (in English)',
+    reportLead: 'Read the report as a responsive web page on phone, tablet or desktop. The original document remains available to download.',
+    readMemo: 'Read the memo',
+    downloadPdf: 'Download the PDF',
+    mapHeading: 'Protest map',
+    mapLead: 'The Flamingo Revolution has spread across cities in Albania, Europe and North America. Use the interactive map to explore participating cities, past protests and upcoming activities.',
+    mapOpen: 'Open the full-screen map',
+  },
+  de: {
+    title: 'Motivation',
+    kicker: 'Warum wir protestieren',
+    h1: 'Motivation',
+    intro: 'Flamingo Berlin entstand als Reaktion auf Entwicklungen, die Natur, Gemeinwohl und Transparenz in Albanien gefährden. Die Proteste richten sich nicht nur gegen ein einzelnes Projekt. Sie fordern darüber hinaus die Einhaltung des Rechts, den Schutz ausgewiesener Gebiete und offene, verantwortungsvolle Entscheidungsprozesse.',
+    memoHeading: 'Was enthält das Memo?',
+    memoIntro: 'Das Memo zur Flamingo Revolution beschreibt die Entwicklung der Bewegung und dokumentiert die wichtigsten Fakten hinter den Protesten. Es umfasst:',
+    memoPoints: [
+      '🌿 die ökologische Bedeutung von Vjosa–Narta',
+      '📜 die Geschichte wichtiger Entwicklungen und Entscheidungen',
+      '📅 eine Chronologie der Proteste',
+      '📢 die Forderungen der Protestierenden',
+      '📚 Dokumente, Quellen und weiterführende Nachweise',
+    ],
+    reportHeading: 'Bericht (auf Englisch)',
+    reportLead: 'Lies den Bericht als responsive Webseite auf Smartphone, Tablet oder Computer. Das Originaldokument steht weiterhin zum Download bereit.',
+    readMemo: 'Memo lesen',
+    downloadPdf: 'PDF herunterladen',
+    mapHeading: 'Protestkarte',
+    mapLead: 'Die Flamingo Revolution ist in Städten Albaniens, Europas und Nordamerikas aktiv. Auf der interaktiven Karte findest du teilnehmende Städte, vergangene Proteste und kommende Aktionen.',
+    mapOpen: 'Karte im Vollbild öffnen',
+  },
+} as const;
+
+const t = copy[lang];
+---
+
+<BaseLayout lang={lang} title={`${t.title} · Flamingo Berlin`} description={t.title}>
+  <SectionBand tone="tint" class="page-header">
+    <div class="section-head">
+      <p class="eyebrow">{t.kicker}</p>
+      <h1>{t.h1}</h1>
+      <p class="lede">{t.intro}</p>
+    </div>
+  </SectionBand>
+
+  <SectionBand tone="grey">
+    <h2>{t.memoHeading}</h2>
+    <p>{t.memoIntro}</p>
+    <ul>
+      {t.memoPoints.map((point) => <li>{point}</li>)}
+    </ul>
+  </SectionBand>
+
+  <SectionBand tone="paper">
+    <h2>{t.reportHeading}</h2>
+    <p>{t.reportLead}</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href={localePath(lang, '/memo/')}>📖 {t.readMemo}</a>
+      <a class="btn" href="/assets/documents/Memo-FlamingoRevolution.pdf">⬇ {t.downloadPdf}</a>
+    </div>
+  </SectionBand>
+
+  <SectionBand tone="tint">
+    <h2>{t.mapHeading}</h2>
+    <p>{t.mapLead}</p>
+    <div class="embedded-viewer">
+      <iframe src="https://pomodoren.github.io/flamingo-map/" title={t.mapHeading} loading="lazy" allowfullscreen></iframe>
+    </div>
+    <div class="btn-row">
+      <a class="btn" href="https://pomodoren.github.io/flamingo-map/" target="_blank" rel="noreferrer">↗ {t.mapOpen}</a>
+    </div>
+  </SectionBand>
+</BaseLayout>

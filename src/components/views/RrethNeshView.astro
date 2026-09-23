@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionBand from '../SectionBand.astro';
+import type { Locale } from '../../i18n/ui';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+
+const copy = {
+  sq: {
+    title: 'Rreth nesh',
+    kicker: 'Kush jemi',
+    h1: 'Rreth Flamingo Berlin',
+    intro: '**Flamingo Berlin** është një nismë qytetare e diasporës shqiptare në Berlin. Ne organizojmë protesta dhe veprime paqësore, ndajmë informacion dhe krijojmë hapësira për bashkëpunim qytetar në mbrojtje të natyrës, demokracisë dhe interesit publik në Shqipëri.',
+    doHeading: 'Çfarë bëjmë?',
+    doCards: [
+      { icon: '📣', title: 'Protestojmë', text: 'Organizojmë protesta dhe aktivitete publike, çdo të diel.' },
+      { icon: '📰', title: 'Informojmë', text: 'Ndajmë të dhëna dhe zhvillime mbi çështjet që ndjekim.' },
+      { icon: '📁', title: 'Përgatisim', text: 'Krijojmë materiale, dokumente dhe burime të hapura për këdo.' },
+    ],
+    principlesHeading: 'Parimet tona',
+    principles: [
+      { icon: '🌿', title: 'Paqësorë', text: 'Mbështesim vetëm veprime paqësore dhe demokratike.' },
+      { icon: '🤝', title: 'Të hapur', text: 'Çdokush mund të kontribuojë sipas kohës, aftësive dhe mundësive që ka.' },
+      { icon: '⚖️', title: 'Të pavarur', text: 'Veprimtaria jonë nuk udhëhiqet nga interesa partiake apo financiare.' },
+      { icon: '📚', title: 'Të verifikueshëm', text: 'Informacionet që publikojmë mbështeten në dokumente dhe burime të kontrollueshme.' },
+      { icon: '💬', title: 'Të respektueshëm', text: 'Diskutojmë idetë me respekt dhe nuk tolerojmë sulme personale apo diskriminim.' },
+    ],
+    partnersHeading: 'Partnerët dhe rrjeti ynë',
+    partnersIntro: 'Punojmë së bashku me:',
+    partners: ['FlamingoRevolution.eu', 'Diaspora Zbarkon', 'Administratorët e Protestave të Diasporës'],
+    partnersOutro: 'Jemi gjithashtu në kontakt me **PPNEA**, **EuroNatur** dhe organizata të tjera që punojnë për mbrojtjen e natyrës dhe interesit publik.',
+    joinHeading: 'Bashkohu',
+    joinText: 'Flamingo Berlin është i hapur për këdo që dëshiron të kontribuojë në mënyrë paqësore dhe konstruktive. Nuk është e nevojshme të jesh organizator. Mund të ndihmosh sipas aftësive të tua.',
+    contribHeading: 'Kontributi',
+    contrib: ['🗓️ Organizim aktivitetesh', '🔎 Kërkim dhe dokumentim', '📣 Komunikim dhe media sociale', '🎨 Dizajn grafik', '📸 Foto dhe video', '🌍 Përkthime', '🚐 Logjistikë', '🤝 Marrëdhënie me organizata dhe institucione'],
+    connectHeading: 'Lidhu me ne',
+    instagramText: 'Ndiq njoftimet, protestat dhe materialet më të fundit.',
+    instagramCta: 'Ndiq @flamingosofberlin',
+    discordText: 'Bashkohu me komunitetin dhe kontribuo në organizimin e aktiviteteve.',
+    discordCta: 'Bashkohu në Discord',
+  },
+  en: {
+    title: 'About us',
+    kicker: 'Who we are',
+    h1: 'About Flamingo Berlin',
+    intro: '**Flamingo Berlin** is a civic initiative of the Albanian diaspora in Berlin. We organize peaceful protests and actions, share information and create opportunities for civic cooperation in defence of nature, democracy and the public interest in Albania.',
+    doHeading: 'What we do',
+    doCards: [
+      { icon: '📣', title: 'Protest', text: 'We organize protests and public activities every Sunday.' },
+      { icon: '📰', title: 'Inform', text: 'We share facts and developments about the issues we follow.' },
+      { icon: '📁', title: 'Prepare', text: 'We create open resources, documents and materials for everyone.' },
+    ],
+    principlesHeading: 'Our principles',
+    principles: [
+      { icon: '🌿', title: 'Peaceful', text: 'We support peaceful, democratic action only.' },
+      { icon: '🤝', title: 'Open', text: 'Everyone can contribute according to their time, skills and means.' },
+      { icon: '⚖️', title: 'Independent', text: 'Our work is not directed by party-political or financial interests.' },
+      { icon: '📚', title: 'Verifiable', text: 'Our information is based on documents and sources that can be checked.' },
+      { icon: '💬', title: 'Respectful', text: 'We discuss ideas respectfully and do not tolerate personal attacks or discrimination.' },
+    ],
+    partnersHeading: 'Partners and our network',
+    partnersIntro: 'We work together with:',
+    partners: ['FlamingoRevolution.eu', 'Diaspora Zbarkon', 'Admins of Diaspora Protests'],
+    partnersOutro: 'We are also in contact with **PPNEA**, **EuroNatur** and other organizations working to protect nature and the public interest.',
+    joinHeading: 'Join us',
+    joinText: 'Flamingo Berlin is open to anyone who wants to contribute peacefully and constructively. You do not need to be an organizer. You can help with events, research, communications, design, photography, translation, logistics or institutional outreach.',
+    contribHeading: 'Ways to contribute',
+    contrib: ['🗓️ Event organizing', '🔎 Research and documentation', '📣 Communications and social media', '🎨 Graphic design', '📸 Photo and video', '🌍 Translation', '🚐 Logistics', '🤝 Outreach to organizations and institutions'],
+    connectHeading: 'Connect with us',
+    instagramText: 'Follow announcements, protests and the latest materials.',
+    instagramCta: 'Follow @flamingosofberlin',
+    discordText: 'Join the community and help organize activities.',
+    discordCta: 'Join us on Discord',
+  },
+  de: {
+    title: 'Über uns',
+    kicker: 'Wer wir sind',
+    h1: 'Über Flamingo Berlin',
+    intro: '**Flamingo Berlin** ist eine zivilgesellschaftliche Initiative der albanischen Diaspora in Berlin. Wir organisieren friedliche Proteste und Aktionen, teilen Informationen und schaffen Raum für Zusammenarbeit zum Schutz von Natur, Demokratie und Gemeinwohl in Albanien.',
+    doHeading: 'Was wir tun',
+    doCards: [
+      { icon: '📣', title: 'Protestieren', text: 'Wir organisieren jeden Sonntag Proteste und öffentliche Aktionen.' },
+      { icon: '📰', title: 'Informieren', text: 'Wir teilen Fakten und Entwicklungen zu den Themen, die wir verfolgen.' },
+      { icon: '📁', title: 'Aufbereiten', text: 'Wir erstellen frei zugängliche Materialien, Dokumente und Quellen.' },
+    ],
+    principlesHeading: 'Unsere Grundsätze',
+    principles: [
+      { icon: '🌿', title: 'Friedlich', text: 'Wir unterstützen ausschließlich friedliche und demokratische Aktionen.' },
+      { icon: '🤝', title: 'Offen', text: 'Alle können entsprechend ihrer Zeit, Fähigkeiten und Möglichkeiten beitragen.' },
+      { icon: '⚖️', title: 'Unabhängig', text: 'Unsere Arbeit wird nicht von parteipolitischen oder finanziellen Interessen bestimmt.' },
+      { icon: '📚', title: 'Nachprüfbar', text: 'Unsere Informationen stützen sich auf überprüfbare Dokumente und Quellen.' },
+      { icon: '💬', title: 'Respektvoll', text: 'Wir diskutieren respektvoll und dulden weder persönliche Angriffe noch Diskriminierung.' },
+    ],
+    partnersHeading: 'Partner und unser Netzwerk',
+    partnersIntro: 'Wir arbeiten zusammen mit:',
+    partners: ['FlamingoRevolution.eu', 'Diaspora Zbarkon', 'Admins der Diaspora-Proteste'],
+    partnersOutro: 'Darüber hinaus stehen wir mit **PPNEA**, **EuroNatur** und weiteren Organisationen in Kontakt, die sich für den Schutz der Natur und des Gemeinwohls einsetzen.',
+    joinHeading: 'Mach mit',
+    joinText: 'Flamingo Berlin steht allen offen, die sich friedlich und konstruktiv beteiligen möchten. Du musst kein Organisationstalent sein. Du kannst bei Veranstaltungen, Recherche, Kommunikation, Gestaltung, Foto und Video, Übersetzungen, Logistik oder der Ansprache von Institutionen helfen.',
+    contribHeading: 'Mitwirken',
+    contrib: ['🗓️ Veranstaltungsorganisation', '🔎 Recherche und Dokumentation', '📣 Kommunikation und Social Media', '🎨 Grafikdesign', '📸 Foto und Video', '🌍 Übersetzungen', '🚐 Logistik', '🤝 Kontakt zu Organisationen und Institutionen'],
+    connectHeading: 'Vernetze dich mit uns',
+    instagramText: 'Folge Ankündigungen, Protesten und den neuesten Materialien.',
+    instagramCta: 'Folge @flamingosofberlin',
+    discordText: 'Komm zur Community und hilf, Aktionen zu organisieren.',
+    discordCta: 'Komm zu uns auf Discord',
+  },
+} as const;
+
+const t = copy[lang];
+const md = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+---
+
+<BaseLayout lang={lang} title={`${t.title} · Flamingo Berlin`} description={t.h1}>
+  <SectionBand tone="tint" class="page-header">
+    <div class="section-head">
+      <p class="eyebrow">{t.kicker}</p>
+      <h1>{t.h1}</h1>
+      <p class="lede" set:html={md(t.intro)} />
+    </div>
+  </SectionBand>
+
+  <SectionBand tone="grey">
+    <h2>{t.doHeading}</h2>
+    <div class="card-grid">
+      {t.doCards.map((card) => (
+        <div class="card">
+          <span class="card-icon">{card.icon}</span>
+          <h3>{card.title}</h3>
+          <p>{card.text}</p>
+        </div>
+      ))}
+    </div>
+  </SectionBand>
+
+  <SectionBand tone="paper">
+    <h2>{t.principlesHeading}</h2>
+    <div class="card-grid">
+      {t.principles.map((card) => (
+        <div class="card">
+          <span class="card-icon">{card.icon}</span>
+          <h3>{card.title}</h3>
+          <p>{card.text}</p>
+        </div>
+      ))}
+    </div>
+  </SectionBand>
+
+  <SectionBand tone="tint">
+    <h2>{t.partnersHeading}</h2>
+    <p>{t.partnersIntro}</p>
+    <ul>
+      {t.partners.map((partner) => <li><strong>{partner}</strong></li>)}
+    </ul>
+    <p set:html={md(t.partnersOutro)} />
+  </SectionBand>
+
+  <SectionBand tone="grey">
+    <h2>{t.joinHeading}</h2>
+    <p>{t.joinText}</p>
+
+    <h3>{t.contribHeading}</h3>
+    <ul class="chip-list">
+      {t.contrib.map((item) => <li>{item}</li>)}
+    </ul>
+  </SectionBand>
+
+  <SectionBand tone="paper">
+    <h2>{t.connectHeading}</h2>
+    <div class="card-grid">
+      <a class="card" href="https://www.instagram.com/flamingosofberlin" target="_blank" rel="noreferrer">
+        <span class="card-icon">📷</span>
+        <h3>Instagram</h3>
+        <p>{t.instagramText}</p>
+        <span class="card-link">{t.instagramCta} →</span>
+      </a>
+      <a class="card" href="https://discord.gg/FNf6hS858" target="_blank" rel="noreferrer">
+        <span class="card-icon">💬</span>
+        <h3>Discord</h3>
+        <p>{t.discordText}</p>
+        <span class="card-link">{t.discordCta} →</span>
+      </a>
+    </div>
+  </SectionBand>
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+interface Entry {
+  number: number;
+  date: string;
+  location: string;
+  href: string;
+  major?: boolean;
+}
+
+interface Props {
+  entries: Entry[];
+  weekLabel: string;
+  sundayLabel: string;
+}
+
+const { entries, weekLabel, sundayLabel } = Astro.props;
+---
+
+<div class="protest-card-grid">
+  {entries.map((entry) => (
+    <a class:list={['protest-card', { 'protest-card--major': entry.major }]} href={entry.href} target="_blank" rel="noreferrer">
+      <span class="protest-card-kicker">{weekLabel} {entry.number} · {sundayLabel}</span>
+      <strong class="protest-card-date">{entry.date}</strong>
+      <span class="protest-card-location">{entry.location}</span>
+      <span class="protest-card-link">Instagram ↗</span>
+    </a>
+  ))}
+</div>

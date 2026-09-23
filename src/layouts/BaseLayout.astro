@@ -1,0 +1,61 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { locales, defaultLocale, type Locale } from '../i18n/ui';
+import { localePath } from '../i18n/utils';
+import '../styles/global.css';
+
+interface Props {
+  lang: Locale;
+  title: string;
+  description: string;
+}
+
+const { lang, title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const prefix = lang === defaultLocale ? '' : `/${lang}`;
+const unprefixed = Astro.url.pathname.startsWith(prefix)
+  ? Astro.url.pathname.slice(prefix.length)
+  : Astro.url.pathname;
+const barePath = unprefixed.replace(/^\/+/, '').replace(/\/+$/, '');
+
+const ogLocales: Record<Locale, string> = { sq: 'sq_AL', en: 'en_US', de: 'de_DE' };
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/flamingo-mark.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    {locales.map((code) => (
+      <link rel="alternate" hreflang={code} href={new URL(localePath(code, barePath), Astro.site)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL(localePath(defaultLocale, barePath), Astro.site)} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Flamingo Berlin" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={new URL('/assets/images/logo.png', Astro.site)} />
+    <meta property="og:locale" content={ogLocales[lang]} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body>
+    <Header lang={lang} />
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

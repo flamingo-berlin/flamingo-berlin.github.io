@@ -1,0 +1,22 @@
+---
+interface Photo {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  photos: Photo[];
+  hint: string;
+}
+
+const { photos, hint } = Astro.props;
+---
+
+<div class="poster-gallery">
+  {photos.map((photo) => (
+    <a href={photo.src} target="_blank" rel="noreferrer">
+      <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
+    </a>
+  ))}
+</div>
+<small class="gallery-hint">{hint}</small>

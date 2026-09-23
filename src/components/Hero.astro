@@ -1,0 +1,88 @@
+---
+interface Action {
+  href: string;
+  label: string;
+  primary?: boolean;
+  external?: boolean;
+}
+
+interface Credit {
+  text: string;
+  href?: string;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  lede?: string;
+  image: string;
+  imageAlt: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  actions?: Action[];
+  credit?: Credit;
+  scrollTo?: string;
+  scrollLabel?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  lede,
+  image,
+  imageAlt,
+  imageWidth = 1027,
+  imageHeight = 770,
+  actions = [],
+  credit,
+  scrollTo,
+  scrollLabel,
+} = Astro.props;
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <img
+    class="hero-img"
+    src={image}
+    alt={imageAlt}
+    width={imageWidth}
+    height={imageHeight}
+    fetchpriority="high"
+    decoding="async"
+  />
+  <div class="hero-inner">
+    <p class="eyebrow hero-eyebrow">{eyebrow}</p>
+    <h1 id="hero-title">{title}</h1>
+    {lede && <p class="hero-lede">{lede}</p>}
+    {actions.length > 0 && (
+      <div class="hero-actions">
+        {actions.map((action) => (
+          <a
+            class:list={['btn', { 'btn-primary': action.primary }]}
+            href={action.href}
+            target={action.external ? '_blank' : undefined}
+            rel={action.external ? 'noreferrer' : undefined}
+          >
+            {action.label}
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+  {credit && (
+    <p class="hero-credit">
+      {credit.href ? (
+        <a href={credit.href} target="_blank" rel="noreferrer">{credit.text}</a>
+      ) : (
+        credit.text
+      )}
+    </p>
+  )}
+  {scrollTo && (
+    <a class="hero-scroll" href={`#${scrollTo}`} aria-label={scrollLabel}>
+      <svg width="16" height="10" viewBox="0 0 16 10" aria-hidden="true">
+        <path d="M1 1l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+  )}
+</section>

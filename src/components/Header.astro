@@ -1,0 +1,111 @@
+---
+import { locales, localeNames, localeFlags, defaultLocale, type Locale } from '../i18n/ui';
+import { useTranslations, localePath } from '../i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Strip the current locale prefix off the current path so the language
+// switcher can rebuild the equivalent URL under each other locale.
+const prefix = lang === defaultLocale ? '' : `/${lang}`;
+const unprefixed = Astro.url.pathname.startsWith(prefix)
+  ? Astro.url.pathname.slice(prefix.length)
+  : Astro.url.pathname;
+const barePath = unprefixed.replace(/^\/+/, '').replace(/\/+$/, '');
+
+const navItems = [
+  { href: localePath(lang, '/'), label: t('nav.protestat') },
+  { href: localePath(lang, '/motivimi/'), label: t('nav.motivimi') },
+  { href: localePath(lang, '/vepro/'), label: t('nav.vepro') },
+  { href: localePath(lang, '/rreth-nesh/'), label: t('nav.rrethNesh') },
+];
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href={localePath(lang, '/')} aria-label="Flamingo Berlin">
+      <span class="brand-mark"><img src="/assets/images/logo.png" alt="" width="40" height="40" /></span>
+      <span class="brand-name">Flamingo <em>Berlin</em></span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="site-nav" aria-label="Main">
+      {navItems.map((item) => (
+        <a href={item.href} aria-current={Astro.url.pathname === item.href ? 'page' : undefined}>{item.label}</a>
+      ))}
+      <div class="lang-switch">
+        <button type="button" class="lang-current" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu">
+          <span class="lang-flag" aria-hidden="true">{localeFlags[lang]}</span>
+          <span>{localeNames[lang]}</span>
+          <svg class="lang-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
+            <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="lang-menu" id="lang-menu" role="menu" aria-label="Language">
+          {locales.map((code) => (
+            <a
+              href={localePath(code, barePath)}
+              class:list={['lang-option', { active: code === lang }]}
+              role="menuitem"
+              aria-current={code === lang ? 'true' : undefined}
+            >
+              <span class="lang-flag" aria-hidden="true">{localeFlags[code]}</span>
+              {localeNames[code]}
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const nav = document.querySelector<HTMLElement>('.nav');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('nav-open') ?? false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  nav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('nav-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  const langSwitch = document.querySelector<HTMLElement>('.lang-switch');
+  const langButton = langSwitch?.querySelector<HTMLButtonElement>('.lang-current');
+
+  const closeLangMenu = () => {
+    langSwitch?.classList.remove('is-open');
+    langButton?.setAttribute('aria-expanded', 'false');
+  };
+
+  langButton?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isOpen = langSwitch?.classList.toggle('is-open') ?? false;
+    langButton.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  document.addEventListener('click', (event) => {
+    if (langSwitch && !langSwitch.contains(event.target as Node)) closeLangMenu();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeLangMenu();
+  });
+
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
+  onScroll();
+  document.addEventListener('scroll', onScroll, { passive: true });
+</script>

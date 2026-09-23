@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionBand from '../SectionBand.astro';
+import type { Locale } from '../../i18n/ui';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+
+const copy = {
+  sq: {
+    title: 'Shpërndaje',
+    description: 'Lidhje, materiale dhe burime për t’u shpërndarë.',
+    kicker: 'Vepro · Hapi 1',
+    h1: 'Shpërndaje',
+    intro: 'Na ndihmo që informacioni të arrijë te më shumë njerëz. Zgjidh një burim, lexoje dhe shpërndaje në rrjetet e tua sociale, grupet e komunitetit ose me persona që mund të interesohen.',
+    sections: [
+      { heading: 'Flamingo Revolution', links: [
+        { icon: '📷', label: 'Flamingo Berlin në Instagram', href: 'https://www.instagram.com/flamingosofberlin' },
+        { icon: '🌐', label: 'Flamingot Vendosin', href: 'https://flamingotvendosin.org' },
+        { icon: '📖', label: 'Flamingo Revolution në Wikipedia', href: 'https://en.wikipedia.org/wiki/Flamingo_Revolution' },
+      ]},
+      { heading: 'Materiale shpjeguese', links: [
+        { icon: '📄', label: 'Artikulli mbi krizën', href: 'https://drive.google.com/file/d/1ApTOzTVWkUntmjF0e4DdXW_Vxi5DWvlG/view?usp=sharing' },
+        { icon: '📄', label: 'Memo mbi Flamingo Revolution', href: 'https://drive.google.com/file/d/1vs-dqkhSW1zEq8_z3Wf5CMg3qcN_0ziI/view?usp=sharing' },
+        { icon: '🗺️', label: 'Harta e problematikave', href: 'https://drive.google.com/file/d/1Meff2HT3KbijIayqyNYfP3C_qEUTBGb3/view?usp=sharing' },
+      ]},
+      { heading: 'PPNEA', links: [
+        { icon: '🌿', label: 'Save Vjosa–Narta', href: 'https://ppnea.org/save-vjosa-narta/?lang=en' },
+        { icon: '📁', label: 'Materiale nga PPNEA', href: 'https://drive.google.com/drive/u/0/folders/1A5c-xrlWcqK1uC6fpBrGMSx5rUtwaHf7' },
+        { icon: '📷', label: 'PPNEA në Instagram', href: 'https://www.instagram.com/ppnea' },
+      ]},
+      { heading: 'Lajme dhe dokumentim', links: [
+        { icon: '📷', label: 'Protestat e Diasporës', href: 'https://www.instagram.com/protestat.e.diaspores' },
+        { icon: '📷', label: 'News24 Albania', href: 'https://www.instagram.com/news24al' },
+        { icon: '📷', label: 'Citizens.al', href: 'https://www.instagram.com/citizens.al' },
+        { icon: '📷', label: 'Piranjat News', href: 'https://www.instagram.com/newspiranjat' },
+      ]},
+    ],
+    howHeading: 'Si të ndihmosh',
+    how: [
+      'Zgjidh një material.',
+      'Kontrollo që informacioni të jetë ende aktual.',
+      'Shpërndaje në Instagram, Facebook, LinkedIn, WhatsApp ose Discord.',
+      'Shto një fjali personale që shpjegon pse po e ndan.',
+      'Përfshi lidhjen e protestës së ardhshme.',
+    ],
+    quote: 'Po ndaj këtë material për të mbështetur mbrojtjen e natyrës, transparencën dhe interesin publik në Shqipëri. Lexojeni dhe shpërndajeni më tej.',
+  },
+  en: {
+    title: 'Share',
+    description: 'Links, materials and resources to share.',
+    kicker: 'Take action · Step 1',
+    h1: 'Share',
+    intro: 'Help us reach more people. Choose a resource, read it, then share it on social media, in community groups or directly with people who may be interested.',
+    sections: [
+      { heading: 'Flamingo Revolution', links: [
+        { icon: '📷', label: 'Flamingo Berlin on Instagram', href: 'https://www.instagram.com/flamingosofberlin' },
+        { icon: '🌐', label: 'Flamingot Vendosin', href: 'https://flamingotvendosin.org' },
+        { icon: '📖', label: 'Flamingo Revolution on Wikipedia', href: 'https://en.wikipedia.org/wiki/Flamingo_Revolution' },
+      ]},
+      { heading: 'Background resources', links: [
+        { icon: '📄', label: 'Article about the crisis', href: 'https://drive.google.com/file/d/1ApTOzTVWkUntmjF0e4DdXW_Vxi5DWvlG/view?usp=sharing' },
+        { icon: '📄', label: 'Flamingo Revolution memo', href: 'https://drive.google.com/file/d/1vs-dqkhSW1zEq8_z3Wf5CMg3qcN_0ziI/view?usp=sharing' },
+        { icon: '🗺️', label: 'Map of the issues', href: 'https://drive.google.com/file/d/1Meff2HT3KbijIayqyNYfP3C_qEUTBGb3/view?usp=sharing' },
+      ]},
+      { heading: 'PPNEA', links: [
+        { icon: '🌿', label: 'Save Vjosa–Narta', href: 'https://ppnea.org/save-vjosa-narta/?lang=en' },
+        { icon: '📁', label: 'Materials from PPNEA', href: 'https://drive.google.com/drive/u/0/folders/1A5c-xrlWcqK1uC6fpBrGMSx5rUtwaHf7' },
+        { icon: '📷', label: 'PPNEA on Instagram', href: 'https://www.instagram.com/ppnea' },
+      ]},
+      { heading: 'News and documentation', links: [
+        { icon: '📷', label: 'Diaspora Protests', href: 'https://www.instagram.com/protestat.e.diaspores' },
+        { icon: '📷', label: 'News24 Albania', href: 'https://www.instagram.com/news24al' },
+        { icon: '📷', label: 'Citizens.al', href: 'https://www.instagram.com/citizens.al' },
+        { icon: '📷', label: 'Piranjat News', href: 'https://www.instagram.com/newspiranjat' },
+      ]},
+    ],
+    howHeading: 'How to help',
+    how: [
+      'Choose a resource and check that it is still current.',
+      'Share it on Instagram, Facebook, LinkedIn, WhatsApp or Discord.',
+      'Add a personal sentence explaining why it matters to you.',
+      'Include the link to the next protest.',
+    ],
+    quote: 'I am sharing this to support nature protection, transparency and the public interest in Albania. Please read and share it further.',
+  },
+  de: {
+    title: 'Teilen',
+    description: 'Links, Materialien und Quellen zum Teilen.',
+    kicker: 'Aktiv werden · Schritt 1',
+    h1: 'Teilen',
+    intro: 'Hilf uns, mehr Menschen zu erreichen. Wähle eine Quelle, lies sie und teile sie in sozialen Netzwerken, Community-Gruppen oder direkt mit Interessierten.',
+    sections: [
+      { heading: 'Flamingo Revolution', links: [
+        { icon: '📷', label: 'Flamingo Berlin auf Instagram', href: 'https://www.instagram.com/flamingosofberlin' },
+        { icon: '🌐', label: 'Flamingot Vendosin', href: 'https://flamingotvendosin.org' },
+        { icon: '📖', label: 'Flamingo Revolution auf Wikipedia', href: 'https://en.wikipedia.org/wiki/Flamingo_Revolution' },
+      ]},
+      { heading: 'Hintergrundmaterial', links: [
+        { icon: '📄', label: 'Artikel über die Krise', href: 'https://drive.google.com/file/d/1ApTOzTVWkUntmjF0e4DdXW_Vxi5DWvlG/view?usp=sharing' },
+        { icon: '📄', label: 'Memo zur Flamingo Revolution', href: 'https://drive.google.com/file/d/1vs-dqkhSW1zEq8_z3Wf5CMg3qcN_0ziI/view?usp=sharing' },
+        { icon: '🗺️', label: 'Karte der Problembereiche', href: 'https://drive.google.com/file/d/1Meff2HT3KbijIayqyNYfP3C_qEUTBGb3/view?usp=sharing' },
+      ]},
+      { heading: 'PPNEA', links: [
+        { icon: '🌿', label: 'PPNEA: Save Vjosa–Narta', href: 'https://ppnea.org/save-vjosa-narta/?lang=en' },
+        { icon: '📁', label: 'Material von PPNEA', href: 'https://drive.google.com/drive/u/0/folders/1A5c-xrlWcqK1uC6fpBrGMSx5rUtwaHf7' },
+        { icon: '📷', label: 'PPNEA auf Instagram', href: 'https://www.instagram.com/ppnea' },
+      ]},
+      { heading: 'Nachrichten und Dokumentation', links: [
+        { icon: '📷', label: 'Protestat e Diasporës', href: 'https://www.instagram.com/protestat.e.diaspores' },
+        { icon: '📷', label: 'News24 Albania', href: 'https://www.instagram.com/news24al' },
+        { icon: '📷', label: 'Citizens.al', href: 'https://www.instagram.com/citizens.al' },
+        { icon: '📷', label: 'Piranjat News', href: 'https://www.instagram.com/newspiranjat' },
+      ]},
+    ],
+    howHeading: 'So kannst du helfen',
+    how: [
+      'Wähle ein Material und prüfe, ob es noch aktuell ist.',
+      'Teile es auf Instagram, Facebook, LinkedIn, WhatsApp oder Discord.',
+      'Ergänze einen persönlichen Satz dazu, warum dir das Thema wichtig ist.',
+      'Füge den Link zum nächsten Protest hinzu.',
+    ],
+    quote: 'Ich teile dieses Material, um Naturschutz, Transparenz und das Gemeinwohl in Albanien zu unterstützen. Bitte lies und teile es weiter.',
+  },
+} as const;
+
+const t = copy[lang];
+---
+
+<BaseLayout lang={lang} title={`${t.title} · Flamingo Berlin`} description={t.description}>
+  <SectionBand tone="tint" class="page-header">
+    <div class="section-head">
+      <p class="eyebrow">{t.kicker}</p>
+      <h1>{t.h1}</h1>
+      <p class="lede">{t.intro}</p>
+    </div>
+  </SectionBand>
+
+  <SectionBand tone="grey">
+    {t.sections.slice(0, 2).map((section) => (
+      <div class="link-group">
+        <h3>{section.heading}</h3>
+        <div class="link-card-grid">
+          {section.links.map((link) => (
+            <a class="link-card" href={link.href} target="_blank" rel="noreferrer">
+              <span class="link-card-icon">{link.icon}</span> {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </SectionBand>
+
+  <SectionBand tone="paper">
+    {t.sections.slice(2).map((section) => (
+      <div class="link-group">
+        <h3>{section.heading}</h3>
+        <div class="link-card-grid">
+          {section.links.map((link) => (
+            <a class="link-card" href={link.href} target="_blank" rel="noreferrer">
+              <span class="link-card-icon">{link.icon}</span> {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </SectionBand>
+
+  <SectionBand tone="tint">
+    <h2>{t.howHeading}</h2>
+    <ol>
+      {t.how.map((step) => <li>{step}</li>)}
+    </ol>
+
+    <blockquote class="letter-quote">
+      <p>{t.quote}</p>
+    </blockquote>
+  </SectionBand>
+</BaseLayout>

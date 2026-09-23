@@ -1,22 +1,32 @@
-# Flamingo Berlin — MkDocs
+# Flamingo Berlin — Astro
 
-Faqe e thjeshtë në shqip, e ndërtuar me MkDocs Material.
+Faqja e Flamingo Berlin, e ndërtuar me [Astro](https://astro.build). Përmbajtja
+është në tre gjuhë (shqip, anglisht, gjermanisht): shqipja është gjuha
+parazgjedhur (pa prefiks URL-je), `en/` dhe `de/` janë versionet e tjera.
+
+## Struktura
+
+- `src/pages/` — rrugët e faqes; shqip në rrënjë, `en/` dhe `de/` për gjuhët e tjera
+- `src/components/views/` — përmbajtja e çdo faqeje (një komponent për faqe, i përkthyer për të tri gjuhët përmes një prop `lang`)
+- `src/components/` — pjesë të ripërdorshme (Header, Footer, karta protestash, galeri, etj.)
+- `src/data/protests.ts` — historiku i protestave (data, vendndodhja, lidhjet)
+- `src/i18n/` — përkthimet e menysë/footer-it dhe ndihmësit për URL-të e gjuhëve
+- `src/styles/global.css` — paleta e ngjyrave dhe stilet
+- `public/assets/` — imazhet dhe dokumentet statike
 
 ## Nisja lokale
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-mkdocs serve
+npm install
+npm run dev
 ```
 
-Hapni `http://127.0.0.1:8000`.
+Hapni `http://localhost:4321`.
 
 ## Ndërtimi
 
 ```bash
-mkdocs build --strict
+npm run build
 ```
 
-Përditësoni `site_url`, `repo_url` dhe lidhjet e rrjeteve sociale në `mkdocs.yml` para publikimit.
+Rezultati gjenerohet në `dist/`.
