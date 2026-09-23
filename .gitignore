@@ -1,5 +1,6 @@
 # Astro / Node
 node_modules/
+node_modules
 .astro/
 dist/
 *.tsbuildinfo

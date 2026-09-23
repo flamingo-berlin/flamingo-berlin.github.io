@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../Hero.astro';
 import SectionBand from '../SectionBand.astro';
-import StatRow from '../StatRow.astro';
 import Gallery from '../Gallery.astro';
 import ProtestArchive from '../ProtestArchive.astro';
 import { localePath } from '../../i18n/utils';
@@ -12,104 +11,35 @@ import { latestProtest, protestArchive, protestPhotos, localize, nextSunday, toI
 interface Props { lang: Locale }
 const { lang } = Astro.props;
 
-// Nature photos of the Vjosë–Nartë Protected Landscape, the place the
-// movement is named after and protests for. Reused from the Flamingo
-// Revolution heritage site's Vjosë–Nartë page, credited under their
-// original Wikimedia Commons licenses.
-const CC_BY = 'https://creativecommons.org/licenses/by/4.0/';
-const CC_BY_SA = 'https://creativecommons.org/licenses/by-sa/4.0/';
+// Hero photo of the Vjosë–Nartë Protected Landscape, the place the movement
+// is named after and protests for. Reused from the Flamingo Revolution
+// heritage site's Vjosë–Nartë page, credited under its original Wikimedia
+// Commons license. The rest of the Vjosë–Nartë nature photos live on the
+// Motivimi page now, which opens with them as its own hero.
 const natureImg = (name: string) => `/assets/vjose-narta/${name}.jpg`;
 const naturePhotos = {
-  'hero-flamingo': { author: 'Arbenllapashtica', license: 'CC BY 4.0', licenseUrl: CC_BY, source: 'https://commons.wikimedia.org/wiki/File:Laguna_e_Nart%C3%ABs_-_Vlor%C3%AB_(25).jpg' },
-  'flamingo-flock': { author: 'Arbenllapashtica', license: 'CC BY 4.0', licenseUrl: CC_BY, source: 'https://commons.wikimedia.org/wiki/File:Laguna_e_Nart%C3%ABs_-_Vlor%C3%AB_(2).jpg' },
-  laguna: { author: 'Leeturtle', license: 'CC BY-SA 4.0', licenseUrl: CC_BY_SA, source: 'https://commons.wikimedia.org/wiki/File:Narta_lagoon,_southern_Albania.jpg' },
-  'zvernec-ishulli': { author: 'Pasztilla (Attila Terbócs)', license: 'CC BY-SA 4.0', licenseUrl: CC_BY_SA, source: 'https://commons.wikimedia.org/wiki/File:Zv%C3%ABrnec_Island,_Albania_01.jpg' },
-  pelikan: { author: 'gailhampshire', license: 'CC BY 2.0', licenseUrl: 'https://creativecommons.org/licenses/by/2.0/', source: 'https://commons.wikimedia.org/wiki/File:Dalmatian_Pelican._Pelecanus_crispus_(42882199270).jpg' },
-  gaforre: { author: 'Pasztilla (Attila Terbócs)', license: 'CC BY-SA 4.0', licenseUrl: CC_BY_SA, source: 'https://commons.wikimedia.org/wiki/File:Narta_Lagoon,_Albania_%E2%80%93_Crab_01.jpg' },
-  bregdeti: { author: 'Wildwheelwildsoul', license: 'CC0', licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/', source: 'https://commons.wikimedia.org/wiki/File:The_Vjosa-Narte_Protected_Landscape_rocks.jpg' },
+  'hero-flamingo': { author: 'Arbenllapashtica', license: 'CC BY 4.0', licenseUrl: 'https://creativecommons.org/licenses/by/4.0/', source: 'https://commons.wikimedia.org/wiki/File:Laguna_e_Nart%C3%ABs_-_Vlor%C3%AB_(25).jpg' },
 } as const;
 
-// A small curated set of recent posts from @flamingosofberlin, shown as a
-// photo gallery. Instagram's CDN sends `Cross-Origin-Resource-Policy:
-// same-origin` on post images, so they can't be hotlinked into an <img> from
-// this site — instead each thumbnail is saved locally (fetched once via
+// A curated set of recent posts about the movement, shown as a 3x3 photo
+// gallery. Instagram's CDN sends `Cross-Origin-Resource-Policy: same-origin`
+// on post images, so they can't be hotlinked into an <img> from this site —
+// instead each thumbnail is saved locally (fetched once via
 // `<permalink>media/?size=l`, no API token needed) and the tile links out to
-// the real post. Update both the permalink and image by hand when there's
-// fresher content to show.
+// the real post (most are @flamingosofberlin; a couple are reposts/features
+// from allied accounts, linked directly to their own permalink). Update both
+// the permalink and image by hand when there's fresher content to show.
 const instagramPosts = [
   { href: 'https://www.instagram.com/p/DdD-FulEQT2/', image: 'post-1.jpg' },
   { href: 'https://www.instagram.com/p/Dbn_6AFDKtp/', image: 'post-2.jpg' },
   { href: 'https://www.instagram.com/p/Ddl1OtkMdsF/', image: 'post-3.jpg' },
+  { href: 'https://www.instagram.com/p/DdlBxLPDIsI/', image: 'post-4.jpg' },
+  { href: 'https://www.instagram.com/p/Ddivpn_kaoD/', image: 'post-5.jpg' },
+  { href: 'https://www.instagram.com/p/DdbXk_iDCA9/', image: 'post-6.jpg' },
+  { href: 'https://www.instagram.com/ledjano_cela/p/DdYiLmFCKz5/', image: 'post-7.jpg' },
+  { href: 'https://www.instagram.com/p/DdTcvpnkZam/', image: 'post-8.jpg' },
+  { href: 'https://www.instagram.com/flamingos.of.munich/p/DdTTHmdtnd9/', image: 'post-9.jpg' },
 ];
-
-const natureTiles = [
-  {
-    photo: 'flamingo-flock', wide: true,
-    alt: { sq: 'Tufë flamingosh mbi ujin e Lagunës së Nartës', en: 'A flock of flamingos over the water of Narta Lagoon', de: 'Ein Flamingoschwarm über dem Wasser der Narta-Lagune' },
-    kicker: { sq: 'Simboli i lëvizjes', en: 'Symbol of the movement', de: 'Symbol der Bewegung' },
-    title: { sq: 'Flamingot e Nartës', en: 'The flamingos of Narta', de: 'Die Flamingos von Narta' },
-    text: {
-      sq: 'Zogu që i dha emrin lëvizjes nuk është vetëm simbol: është banor real i lagunës.',
-      en: 'The bird that gave the movement its name is not just a symbol: it is a real resident of the lagoon.',
-      de: 'Der Vogel, der der Bewegung ihren Namen gab, ist nicht nur ein Symbol: Er lebt wirklich in der Lagune.',
-    },
-  },
-  {
-    photo: 'laguna',
-    alt: { sq: 'Laguna e Nartës me një gadishull të vogël dhe male në sfond', en: 'Narta Lagoon with a small peninsula and mountains in the background', de: 'Die Narta-Lagune mit einer kleinen Halbinsel und Bergen im Hintergrund' },
-    kicker: { sq: 'Zonë e rëndësishme për shpendët', en: 'Important bird area', de: 'Wichtiges Vogelschutzgebiet' },
-    title: { sq: 'Laguna e Nartës', en: 'Narta Lagoon', de: 'Lagune von Narta' },
-    text: {
-      sq: 'Laguna bregdetare pranë Vlorës, me mbi 200 lloje shpendësh të regjistruara.',
-      en: 'A coastal lagoon near Vlorë, home to more than 200 recorded bird species.',
-      de: 'Eine Küstenlagune bei Vlora mit mehr als 200 erfassten Vogelarten.',
-    },
-  },
-  {
-    photo: 'zvernec-ishulli',
-    alt: { sq: 'Ishulli i Zvërnecit i mbuluar me pyll, parë nga një urë druri', en: 'The forested island of Zvërnec, seen from a wooden footbridge', de: 'Die bewaldete Insel Zvërnec, gesehen von einem Holzsteg' },
-    kicker: { sq: 'Peizazh dhe trashëgimi', en: 'Landscape and heritage', de: 'Landschaft und Erbe' },
-    title: { sq: 'Ishulli i Zvërnecit', en: 'Zvërnec Island', de: 'Insel Zvërnec' },
-    text: {
-      sq: 'Ishull i pyllëzuar me manastir, i lidhur me bregun me një urë druri.',
-      en: 'A forested island with a monastery, linked to the shore by a wooden footbridge.',
-      de: 'Eine bewaldete Insel mit einem Kloster, über einen Holzsteg mit dem Ufer verbunden.',
-    },
-  },
-  {
-    photo: 'pelikan',
-    alt: { sq: 'Pelikan kaçurrel me krahë të hapur në bregun e kripëtoreve', en: 'A Dalmatian pelican with open wings on the shore of the salt pans', de: 'Ein Krauskopfpelikan mit ausgebreiteten Flügeln am Ufer der Salinen' },
-    kicker: { sq: 'Shpendët e ujit', en: 'Waterbirds', de: 'Wasservögel' },
-    title: { sq: 'Pelikani kaçurrel', en: 'Dalmatian pelican', de: 'Krauskopfpelikan' },
-    text: {
-      sq: 'Një nga shpendët më të mëdhenj të ujit në rajon, i fotografuar te kripëtoret.',
-      en: 'One of the region’s largest waterbirds, photographed near the salt pans.',
-      de: 'Einer der größten Wasservögel der Region, fotografiert an den Salinen.',
-    },
-  },
-  {
-    photo: 'gaforre',
-    alt: { sq: 'Një gaforre jeshile në rërën e lagunës', en: 'A green crab on the sand of the lagoon', de: 'Eine grüne Krabbe im Sand der Lagune' },
-    kicker: { sq: 'Jeta e vogël', en: 'Small life', de: 'Kleines Leben' },
-    title: { sq: 'Gaforrja e lagunës', en: 'The lagoon crab', de: 'Die Lagunenkrabbe' },
-    text: {
-      sq: 'Zinxhiri ushqimor varet edhe nga kafshët e vogla që jetojnë në rërë dhe baltë.',
-      en: 'The food chain also depends on the small creatures living in the sand and mud.',
-      de: 'Die Nahrungskette hängt auch von den kleinen Lebewesen in Sand und Schlamm ab.',
-    },
-  },
-  {
-    photo: 'bregdeti',
-    alt: { sq: 'Shkëmbinj bregdetarë që futen në det në Peizazhin e Mbrojtur Vjosë–Nartë', en: 'Coastal rocks meeting the sea in the Vjosë–Nartë Protected Landscape', de: 'Küstenfelsen, die in der geschützten Landschaft Vjosë–Nartë auf das Meer treffen' },
-    kicker: { sq: 'Bregdeti', en: 'Coastline', de: 'Küste' },
-    title: { sq: 'Bregu shkëmbor', en: 'The rocky shore', de: 'Die Felsenküste' },
-    text: {
-      sq: 'Shkëmbinj bregdetarë brenda Peizazhit të Mbrojtur Vjosë–Nartë.',
-      en: 'Coastal rocks within the Vjosë–Nartë Protected Landscape.',
-      de: 'Küstenfelsen innerhalb der geschützten Landschaft Vjosë–Nartë.',
-    },
-  },
-] as const;
 
 const copy = {
   sq: {
@@ -121,17 +51,12 @@ const copy = {
     heroCta: 'Shiko protestën e ardhshme',
     heroSecondary: 'Si mund të veprosh',
     heroCredit: 'Foto',
-    natureKicker: 'Çfarë po mbrojmë',
-    natureHeading: 'Vjosa–Narta: laguna dhe pylli pas emrit "Flamingo"',
-    natureLead: 'Emri i lëvizjes vjen nga vetë zogjtë që jetojnë këtu. Kjo është arsyeja pse dalim në rrugët e Berlinit çdo të diel.',
-    natureMore: 'Lexo më shumë te Motivimi →',
-    numbersKicker: 'Lëvizja në shifra',
-    statCount: 'Protesta deri tani',
-    statPeaceful: 'Paqësore',
     nextBadge: 'Protesta e ardhshme',
     nextHeading: 'Protesto!',
     nextSubheading: 'Bashkohu të dielën e ardhshme',
     nextDateLabel: 'Data',
+    locationKicker: 'Vendndodhja',
+    frequencyKicker: 'Ritmi',
     nextLocationLabel: 'Berlin',
     nextTimeNote: 'Ora dhe pika e mbledhjes konfirmohen në Instagram pak ditë përpara. Shto datën në kalendar që të mos e humbasësh njoftimin.',
     calendarCta: 'Shto në kalendar (Google)',
@@ -165,17 +90,12 @@ const copy = {
     heroCta: 'See the next protest',
     heroSecondary: 'How you can help',
     heroCredit: 'Photo',
-    natureKicker: 'What we’re protecting',
-    natureHeading: 'Vjosa–Narta: the lagoon and forest behind the name "Flamingo"',
-    natureLead: 'The movement’s name comes from the birds that live here. This is why we take to Berlin’s streets every Sunday.',
-    natureMore: 'Read more in Motivation →',
-    numbersKicker: 'The movement in numbers',
-    statCount: 'Protests so far',
-    statPeaceful: 'Peaceful',
     nextBadge: 'Next protest',
     nextHeading: 'Protest!',
     nextSubheading: 'Join us next Sunday',
     nextDateLabel: 'Date',
+    locationKicker: 'Location',
+    frequencyKicker: 'Schedule',
     nextLocationLabel: 'Berlin',
     nextTimeNote: 'The time and meeting point are confirmed on Instagram a few days beforehand. Add the date to your calendar so you don’t miss the announcement.',
     calendarCta: 'Add to calendar (Google)',
@@ -209,17 +129,12 @@ const copy = {
     heroCta: 'Nächsten Protest ansehen',
     heroSecondary: 'So kannst du helfen',
     heroCredit: 'Foto',
-    natureKicker: 'Was wir schützen',
-    natureHeading: 'Vjosa–Narta: die Lagune und der Wald hinter dem Namen „Flamingo“',
-    natureLead: 'Der Name der Bewegung stammt von den Vögeln, die hier leben. Deshalb gehen wir jeden Sonntag auf Berlins Straßen.',
-    natureMore: 'Mehr dazu unter Motivation →',
-    numbersKicker: 'Die Bewegung in Zahlen',
-    statCount: 'Bisherige Proteste',
-    statPeaceful: 'Friedlich',
     nextBadge: 'Nächster Protest',
     nextHeading: 'Protestiere!',
     nextSubheading: 'Mach nächsten Sonntag mit',
     nextDateLabel: 'Datum',
+    locationKicker: 'Ort',
+    frequencyKicker: 'Rhythmus',
     nextLocationLabel: 'Berlin',
     nextTimeNote: 'Uhrzeit und Treffpunkt werden wenige Tage vorher auf Instagram bestätigt. Trag dir das Datum in den Kalender ein, damit du die Ankündigung nicht verpasst.',
     calendarCta: 'Zum Kalender hinzufügen (Google)',
@@ -267,6 +182,11 @@ const dateFormatter = new Intl.DateTimeFormat(lang === 'sq' ? 'sq-AL' : lang ===
   weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
 });
 const nextDateLabel = dateFormatter.format(nextDate);
+const dateLocale = lang === 'sq' ? 'sq-AL' : lang === 'de' ? 'de-DE' : 'en-GB';
+const nextWeekday = new Intl.DateTimeFormat(dateLocale, { weekday: 'long', timeZone: 'UTC' }).format(nextDate);
+const nextDay = new Intl.DateTimeFormat(dateLocale, { day: '2-digit', timeZone: 'UTC' }).format(nextDate);
+const nextMonth = new Intl.DateTimeFormat(dateLocale, { month: 'short', timeZone: 'UTC' }).format(nextDate).replace('.', '');
+const nextYear = new Intl.DateTimeFormat(dateLocale, { year: 'numeric', timeZone: 'UTC' }).format(nextDate);
 
 const calendarTitle = { sq: 'Protesta e Flamingo Berlin', en: 'Flamingo Berlin protest', de: 'Protest von Flamingo Berlin' }[lang];
 const calendarDetails = {
@@ -314,26 +234,37 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsBody)}
   />
 
   <SectionBand id="protesta-e-ardhshme" tone="grey" class="hero-overlap">
-    <span class="protest-status">{t.nextBadge}</span>
-    <div class="section-head">
+    <div class="section-head protest-section-head">
+      <span class="protest-status">{t.nextBadge}</span>
       <h2>{t.nextHeading}</h2>
       <p class="lede">{t.nextSubheading}</p>
     </div>
-    <div class="highlight-panel">
-      <div class="protest-meta">
-        <span>📅 {nextDateLabel}</span>
-        <span>📍 {t.nextLocationLabel}</span>
-        <span>🔁 {t.every}</span>
+    <div class="protest-event-card">
+      <time class="protest-date" datetime={nextDate.toISOString().slice(0, 10)} aria-label={nextDateLabel}>
+        <span class="protest-date-weekday">{nextWeekday}</span>
+        <strong>{nextDay}</strong>
+        <span class="protest-date-month">{nextMonth}</span>
+        <span class="protest-date-year">{nextYear}</span>
+      </time>
+      <div class="protest-event-details">
+        <div class="protest-facts">
+          <div class="protest-fact">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>
+            <span><small>{t.locationKicker}</small><strong>{t.nextLocationLabel}</strong></span>
+          </div>
+          <div class="protest-fact">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6.1 9a7 7 0 0 1 11.6-2.6L20 9M4 15l2.3 2.6A7 7 0 0 0 17.9 15"/></svg>
+            <span><small>{t.frequencyKicker}</small><strong>{t.every}</strong></span>
+          </div>
+        </div>
+        <p class="protest-note">{t.nextTimeNote}</p>
+        <div class="btn-row protest-actions">
+          <a class="btn btn-primary" href={googleCalendarUrl} target="_blank" rel="noreferrer">{t.calendarCta}</a>
+          <a class="btn" href={icsHref} download={`flamingo-berlin-${nextDateStart}.ics`}>{t.icsCta}</a>
+        </div>
       </div>
-      <p class="callout">{t.nextTimeNote}</p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href={googleCalendarUrl} target="_blank" rel="noreferrer">🗓️ {t.calendarCta}</a>
-        <a class="btn" href={icsHref} download={`flamingo-berlin-${nextDateStart}.ics`}>⬇ {t.icsCta}</a>
-      </div>
-      <p class="protest-meta">
-        <span>{t.latestBadge}: <a href={latestProtest.href} target="_blank" rel="noreferrer">{t.viewPost} →</a></span>
-      </p>
     </div>
+    <p class="protest-latest">{t.latestBadge}: <a href={latestProtest.href} target="_blank" rel="noreferrer">{t.viewPost} →</a></p>
   </SectionBand>
 
   <SectionBand tone="paper">
@@ -344,15 +275,6 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsBody)}
   </SectionBand>
 
   <SectionBand tone="tint">
-    <p class="eyebrow">{t.numbersKicker}</p>
-    <StatRow stats={[
-      { number: String(latestProtest.number), label: t.statCount },
-      { number: '🦩', label: t.every },
-      { number: '100%', label: t.statPeaceful },
-    ]} />
-  </SectionBand>
-
-  <SectionBand tone="paper">
     <p class="eyebrow">{t.igKicker}</p>
     <h2>{t.igHeading}</h2>
     <p>{t.igLead}</p>
@@ -373,31 +295,6 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsBody)}
     <p class="eyebrow">{t.historyKicker}</p>
     <h2>{t.historyHeading}</h2>
     <ProtestArchive entries={archive} weekLabel={t.weekLabel} sundayLabel={t.sunday} />
-  </SectionBand>
-
-  <SectionBand tone="paper">
-    <p class="eyebrow">{t.natureKicker}</p>
-    <h2>{t.natureHeading}</h2>
-    <p>{t.natureLead}</p>
-    <div class="tile-grid">
-      {natureTiles.map((tile) => {
-        const credit = naturePhotos[tile.photo];
-        return (
-          <figure class:list={['tile', { 'tile-wide': 'wide' in tile && tile.wide }]}>
-            <img src={natureImg(tile.photo)} alt={tile.alt[lang]} loading="lazy" decoding="async" />
-            <figcaption>
-              <span class="tile-kicker">{tile.kicker[lang]}</span>
-              <strong>{tile.title[lang]}</strong>
-              <span class="tile-text">{tile.text[lang]}</span>
-              <small>{t.heroCredit}: <a href={credit.source} target="_blank" rel="noreferrer">{credit.author}</a> · <a href={credit.licenseUrl} target="_blank" rel="noreferrer">{credit.license}</a></small>
-            </figcaption>
-          </figure>
-        );
-      })}
-    </div>
-    <div class="btn-row">
-      <a class="btn" href={localePath(lang, '/motivimi/')}>{t.natureMore}</a>
-    </div>
   </SectionBand>
 
   <SectionBand tone="tint" class="cta-banner">

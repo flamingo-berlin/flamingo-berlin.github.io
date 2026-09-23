@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../Hero.astro';
 import SectionBand from '../SectionBand.astro';
 import { localePath } from '../../i18n/utils';
 import type { Locale } from '../../i18n/ui';
@@ -7,9 +8,114 @@ import type { Locale } from '../../i18n/ui';
 interface Props { lang: Locale }
 const { lang } = Astro.props;
 
+// Nature photos of the Vjosë–Nartë Protected Landscape, the place the
+// movement is named after and protests for. Reused from the Flamingo
+// Revolution heritage site's Vjosë–Nartë page, credited under their
+// original Wikimedia Commons licenses. This page opens with them as its
+// own hero, since "what we're protecting" is the visual case for "why we
+// protest" (the rest of this page).
+const CC_BY = 'https://creativecommons.org/licenses/by/4.0/';
+const CC_BY_SA = 'https://creativecommons.org/licenses/by-sa/4.0/';
+const natureImg = (name: string) => `/assets/vjose-narta/${name}.jpg`;
+const naturePhotos = {
+  laguna: { author: 'Leeturtle', license: 'CC BY-SA 4.0', licenseUrl: CC_BY_SA, source: 'https://commons.wikimedia.org/wiki/File:Narta_lagoon,_southern_Albania.jpg' },
+  'flamingo-flock': { author: 'Arbenllapashtica', license: 'CC BY 4.0', licenseUrl: CC_BY, source: 'https://commons.wikimedia.org/wiki/File:Laguna_e_Nart%C3%ABs_-_Vlor%C3%AB_(2).jpg' },
+  'zvernec-ishulli': { author: 'Pasztilla (Attila Terbócs)', license: 'CC BY-SA 4.0', licenseUrl: CC_BY_SA, source: 'https://commons.wikimedia.org/wiki/File:Zv%C3%ABrnec_Island,_Albania_01.jpg' },
+  pelikan: { author: 'gailhampshire', license: 'CC BY 2.0', licenseUrl: 'https://creativecommons.org/licenses/by/2.0/', source: 'https://commons.wikimedia.org/wiki/File:Dalmatian_Pelican._Pelecanus_crispus_(42882199270).jpg' },
+  'cafka-e-bardhe': { author: 'Pasztilla (Attila Terbócs)', license: 'CC BY-SA 4.0', licenseUrl: CC_BY_SA, source: 'https://commons.wikimedia.org/wiki/File:Narta_Lagoon,_Albania_%E2%80%93_Little_egret.jpg' },
+  sqepbiza: { author: 'Andreas Trepte', license: 'CC BY-SA 2.5', licenseUrl: 'https://creativecommons.org/licenses/by-sa/2.5/', source: 'https://commons.wikimedia.org/wiki/File:Pied_Avocet_Recurvirostra_avosetta.jpg' },
+  gaforre: { author: 'Pasztilla (Attila Terbócs)', license: 'CC BY-SA 4.0', licenseUrl: CC_BY_SA, source: 'https://commons.wikimedia.org/wiki/File:Narta_Lagoon,_Albania_%E2%80%93_Crab_01.jpg' },
+  bregdeti: { author: 'Wildwheelwildsoul', license: 'CC0', licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/', source: 'https://commons.wikimedia.org/wiki/File:The_Vjosa-Narte_Protected_Landscape_rocks.jpg' },
+} as const;
+
+const natureTiles = [
+  {
+    photo: 'flamingo-flock', wide: true,
+    alt: { sq: 'Tufë flamingosh mbi ujin e Lagunës së Nartës', en: 'A flock of flamingos over the water of Narta Lagoon', de: 'Ein Flamingoschwarm über dem Wasser der Narta-Lagune' },
+    kicker: { sq: 'Simboli i lëvizjes', en: 'Symbol of the movement', de: 'Symbol der Bewegung' },
+    title: { sq: 'Flamingot e Nartës', en: 'The flamingos of Narta', de: 'Die Flamingos von Narta' },
+    text: {
+      sq: 'Zogu që i dha emrin lëvizjes nuk është vetëm simbol: është banor real i lagunës.',
+      en: 'The bird that gave the movement its name is not just a symbol: it is a real resident of the lagoon.',
+      de: 'Der Vogel, der der Bewegung ihren Namen gab, ist nicht nur ein Symbol: Er lebt wirklich in der Lagune.',
+    },
+  },
+  {
+    photo: 'zvernec-ishulli',
+    alt: { sq: 'Ishulli i Zvërnecit i mbuluar me pyll, parë nga një urë druri', en: 'The forested island of Zvërnec, seen from a wooden footbridge', de: 'Die bewaldete Insel Zvërnec, gesehen von einem Holzsteg' },
+    kicker: { sq: 'Peizazh dhe trashëgimi', en: 'Landscape and heritage', de: 'Landschaft und Erbe' },
+    title: { sq: 'Ishulli i Zvërnecit', en: 'Zvërnec Island', de: 'Insel Zvërnec' },
+    text: {
+      sq: 'Ishull i pyllëzuar me manastir, i lidhur me bregun me një urë druri.',
+      en: 'A forested island with a monastery, linked to the shore by a wooden footbridge.',
+      de: 'Eine bewaldete Insel mit einem Kloster, über einen Holzsteg mit dem Ufer verbunden.',
+    },
+  },
+  {
+    photo: 'pelikan',
+    alt: { sq: 'Pelikan kaçurrel me krahë të hapur në bregun e kripëtoreve', en: 'A Dalmatian pelican with open wings on the shore of the salt pans', de: 'Ein Krauskopfpelikan mit ausgebreiteten Flügeln am Ufer der Salinen' },
+    kicker: { sq: 'Shpendët e ujit', en: 'Waterbirds', de: 'Wasservögel' },
+    title: { sq: 'Pelikani kaçurrel', en: 'Dalmatian pelican', de: 'Krauskopfpelikan' },
+    text: {
+      sq: 'Një nga shpendët më të mëdhenj të ujit në rajon, i fotografuar te kripëtoret.',
+      en: 'One of the region’s largest waterbirds, photographed near the salt pans.',
+      de: 'Einer der größten Wasservögel der Region, fotografiert an den Salinen.',
+    },
+  },
+  {
+    photo: 'cafka-e-bardhe',
+    alt: { sq: 'Çafkë e bardhë e vogël në fluturim mbi ujin e lagunës', en: 'A little egret in flight over the lagoon water', de: 'Ein Seidenreiher im Flug über dem Lagunenwasser' },
+    kicker: { sq: 'Shpendët e ujit', en: 'Waterbirds', de: 'Wasservögel' },
+    title: { sq: 'Çapka e bardhë e vogël', en: 'Little egret', de: 'Seidenreiher' },
+    text: {
+      sq: 'Rëndon shpesh nëpër ujin e cekët të lagunës, duke gjuajtur peshq të vegjël dhe gaforre.',
+      en: 'Often seen wading through the lagoon’s shallow water, hunting small fish and crabs.',
+      de: 'Oft im seichten Wasser der Lagune zu sehen, wo er kleine Fische und Krabben jagt.',
+    },
+  },
+  {
+    photo: 'sqepbiza',
+    alt: { sq: 'Sqepbiza duke ecur në baltën e kripëtoreve', en: 'A pied avocet walking on the mudflats of the salt pans', de: 'Ein Säbelschnäbler auf dem Schlick der Salinen' },
+    kicker: { sq: 'Shpendët folezues', en: 'Nesting birds', de: 'Brutvögel' },
+    title: { sq: 'Sqepbiza', en: 'Pied avocet', de: 'Säbelschnäbler' },
+    text: {
+      sq: 'Njihet për sqepin e lakuar lart; laguna është një nga vendet e rëndësishme të folezimit të saj në Shqipëri.',
+      en: 'Known for its upward-curving bill; the lagoon is one of Albania’s important nesting sites for the species.',
+      de: 'Bekannt für seinen nach oben gebogenen Schnabel; die Lagune ist eines der wichtigen Brutgebiete der Art in Albanien.',
+    },
+  },
+  {
+    photo: 'gaforre',
+    alt: { sq: 'Një gaforre jeshile në rërën e lagunës', en: 'A green crab on the sand of the lagoon', de: 'Eine grüne Krabbe im Sand der Lagune' },
+    kicker: { sq: 'Jeta e vogël', en: 'Small life', de: 'Kleines Leben' },
+    title: { sq: 'Gaforrja e lagunës', en: 'The lagoon crab', de: 'Die Lagunenkrabbe' },
+    text: {
+      sq: 'Zinxhiri ushqimor varet edhe nga kafshët e vogla që jetojnë në rërë dhe baltë.',
+      en: 'The food chain also depends on the small creatures living in the sand and mud.',
+      de: 'Die Nahrungskette hängt auch von den kleinen Lebewesen in Sand und Schlamm ab.',
+    },
+  },
+  {
+    photo: 'bregdeti',
+    alt: { sq: 'Shkëmbinj bregdetarë që futen në det në Peizazhin e Mbrojtur Vjosë–Nartë', en: 'Coastal rocks meeting the sea in the Vjosë–Nartë Protected Landscape', de: 'Küstenfelsen, die in der geschützten Landschaft Vjosë–Nartë auf das Meer treffen' },
+    kicker: { sq: 'Bregdeti', en: 'Coastline', de: 'Küste' },
+    title: { sq: 'Bregu shkëmbor', en: 'The rocky shore', de: 'Die Felsenküste' },
+    text: {
+      sq: 'Shkëmbinj bregdetarë brenda Peizazhit të Mbrojtur Vjosë–Nartë.',
+      en: 'Coastal rocks within the Vjosë–Nartë Protected Landscape.',
+      de: 'Küstenfelsen innerhalb der geschützten Landschaft Vjosë–Nartë.',
+    },
+  },
+] as const;
+
 const copy = {
   sq: {
     title: 'Motivimi',
+    heroCredit: 'Foto',
+    natureKicker: 'Çfarë po mbrojmë',
+    natureHeading: 'Vjosa–Narta: laguna dhe pylli pas emrit "Flamingo"',
+    natureLead: 'Emri i lëvizjes vjen nga vetë zogjtë që jetojnë këtu. Kjo është arsyeja pse dalim në rrugët e Berlinit çdo të diel.',
+    scrollHint: 'Shiko më shumë',
     kicker: 'Pse protestojmë',
     h1: 'Motivimi',
     intro: 'Flamingo Berlin lindi si përgjigje ndaj zhvillimeve që rrezikojnë natyrën, interesin publik dhe transparencën në Shqipëri. Protestat nuk përfaqësojnë vetëm kundërshtimin ndaj një projekti të vetëm, por një kërkesë më të gjerë për respektimin e ligjit, mbrojtjen e zonave të mbrojtura dhe një proces vendimmarrjeje të hapur e të përgjegjshëm.',
@@ -32,6 +138,11 @@ const copy = {
   },
   en: {
     title: 'Motivation',
+    heroCredit: 'Photo',
+    natureKicker: 'What we’re protecting',
+    natureHeading: 'Vjosa–Narta: the lagoon and forest behind the name "Flamingo"',
+    natureLead: 'The movement’s name comes from the birds that live here. This is why we take to Berlin’s streets every Sunday.',
+    scrollHint: 'See more',
     kicker: 'Why we protest',
     h1: 'Motivation',
     intro: 'Flamingo Berlin began in response to developments threatening nature, the public interest and transparency in Albania. The protests are not merely opposition to one project; they are a broader call to uphold the law, protect designated areas and ensure open, accountable decision-making.',
@@ -54,6 +165,11 @@ const copy = {
   },
   de: {
     title: 'Motivation',
+    heroCredit: 'Foto',
+    natureKicker: 'Was wir schützen',
+    natureHeading: 'Vjosa–Narta: die Lagune und der Wald hinter dem Namen „Flamingo“',
+    natureLead: 'Der Name der Bewegung stammt von den Vögeln, die hier leben. Deshalb gehen wir jeden Sonntag auf Berlins Straßen.',
+    scrollHint: 'Mehr sehen',
     kicker: 'Warum wir protestieren',
     h1: 'Motivation',
     intro: 'Flamingo Berlin entstand als Reaktion auf Entwicklungen, die Natur, Gemeinwohl und Transparenz in Albanien gefährden. Die Proteste richten sich nicht nur gegen ein einzelnes Projekt. Sie fordern darüber hinaus die Einhaltung des Rechts, den Schutz ausgewiesener Gebiete und offene, verantwortungsvolle Entscheidungsprozesse.',
@@ -77,13 +193,51 @@ const copy = {
 } as const;
 
 const t = copy[lang];
+const laguna = naturePhotos.laguna;
+const heroAlt = {
+  sq: 'Laguna e Nartës me një gadishull të vogël dhe male në sfond',
+  en: 'Narta Lagoon with a small peninsula and mountains in the background',
+  de: 'Die Narta-Lagune mit einer kleinen Halbinsel und Bergen im Hintergrund',
+};
 ---
 
-<BaseLayout lang={lang} title={`${t.title} · Flamingo Berlin`} description={t.title}>
-  <SectionBand tone="tint" class="page-header">
+<BaseLayout lang={lang} title={`${t.title} · Flamingo Berlin`} description={t.natureHeading}>
+  <Hero
+    eyebrow={t.natureKicker}
+    title={t.natureHeading}
+    lede={t.natureLead}
+    image={natureImg('laguna')}
+    imageAlt={heroAlt[lang]}
+    imageWidth={1920}
+    imageHeight={1440}
+    credit={{ text: `${t.heroCredit}: ${laguna.author}, ${laguna.license}`, href: laguna.source }}
+    scrollTo="cfare-po-mbrojme"
+    scrollLabel={t.scrollHint}
+  />
+
+  <SectionBand id="cfare-po-mbrojme" tone="paper" class="hero-overlap">
+    <div class="tile-grid">
+      {natureTiles.map((tile) => {
+        const credit = naturePhotos[tile.photo];
+        return (
+          <figure class:list={['tile', { 'tile-wide': 'wide' in tile && tile.wide }]}>
+            <img src={natureImg(tile.photo)} alt={tile.alt[lang]} loading="lazy" decoding="async" />
+            <figcaption>
+              <span class="tile-kicker">{tile.kicker[lang]}</span>
+              <strong>{tile.title[lang]}</strong>
+              <span class="tile-text">{tile.text[lang]}</span>
+              <small>{t.heroCredit}: <a href={credit.source} target="_blank" rel="noreferrer">{credit.author}</a> · <a href={credit.licenseUrl} target="_blank" rel="noreferrer">{credit.license}</a></small>
+            </figcaption>
+          </figure>
+        );
+      })}
+    </div>
+  </SectionBand>
+
+  <SectionBand tone="tint">
     <div class="section-head">
       <p class="eyebrow">{t.kicker}</p>
-      <h1>{t.h1}</h1>
+      <h2>{t.h1}</h2>
       <p class="lede">{t.intro}</p>
     </div>
   </SectionBand>
@@ -94,14 +248,13 @@ const t = copy[lang];
     <ul>
       {t.memoPoints.map((point) => <li>{point}</li>)}
     </ul>
-  </SectionBand>
-
-  <SectionBand tone="paper">
-    <h2>{t.reportHeading}</h2>
-    <p>{t.reportLead}</p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href={localePath(lang, '/memo/')}>📖 {t.readMemo}</a>
-      <a class="btn" href="/assets/documents/Memo-FlamingoRevolution.pdf">⬇ {t.downloadPdf}</a>
+    <div class="memo-report-block">
+      <h2>{t.reportHeading}</h2>
+      <p>{t.reportLead}</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href={localePath(lang, '/memo/')}>📖 {t.readMemo}</a>
+        <a class="btn" href="/assets/documents/Memo-FlamingoRevolution.pdf">⬇ {t.downloadPdf}</a>
+      </div>
     </div>
   </SectionBand>
 

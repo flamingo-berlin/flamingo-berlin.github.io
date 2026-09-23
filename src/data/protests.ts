@@ -19,8 +19,12 @@ export interface Protest {
 export const latestProtest: Protest = {
   number: 16,
   date: { sq: '20 shtator 2026', en: '20 September 2026', de: '20. September 2026' },
-  location: { sq: 'Berlin', en: 'Berlin', de: 'Berlin' },
-  href: 'https://www.instagram.com/flamingosofberlin',
+  location: {
+    sq: 'Përballë Rotes Rathaus, Rathausstraße 15, Berlin · ora 16:00',
+    en: 'Opposite Rotes Rathaus, Rathausstraße 15, Berlin · 16:00',
+    de: 'Gegenüber dem Roten Rathaus, Rathausstraße 15, Berlin · 16:00 Uhr',
+  },
+  href: 'https://www.instagram.com/p/DdTcvpnkZam/',
 };
 
 export const protestArchive: Protest[] = [

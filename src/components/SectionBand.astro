@@ -8,6 +8,6 @@ interface Props {
 const { tone = 'paper', class: className, id } = Astro.props;
 ---
 
-<div id={id} class:list={['section-band', `section-band--${tone}`, className]}>
+<section id={id} class:list={['section-band', `section-band--${tone}`, className]} data-reveal>
   <slot />
-</div>
+</section>
